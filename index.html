@@ -521,28 +521,11 @@ body.hub-active{overflow:auto}
 /* Full bar chart */
 .m-bars{max-height:55vh;overflow-y:auto;padding-right:.3rem}
 .m-bar-row{display:flex;align-items:center;gap:.4rem;padding:3px 0;border-bottom:1px solid rgba(0,0,0,.03)}
-.m-bar-rank{font-family:var(--num);font-size:.85rem;width:22px;text-align:center;flex-shrink:0;font-weight:700}
+.m-bar-rank{font-family:var(--num);font-size:.85rem;width:22px;text-align:center;flex-shrink:0;font-weight:700;color:var(--g500)}
 .m-bar-name{font-size:.75rem;color:var(--td);width:60px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .m-bar-track{flex:1;height:16px;background:var(--g50);border-radius:8px;overflow:hidden}
-.m-bar-fill{height:100%;border-radius:8px;transition:width 1.2s var(--smooth)}
+.m-bar-fill{height:100%;border-radius:8px;transition:width 1.2s var(--smooth);background:linear-gradient(90deg,var(--g300),var(--g500))}
 .m-bar-score{font-family:var(--num);font-size:.8rem;color:var(--tl);width:28px;text-align:right;flex-shrink:0}
-.tier-mvp .m-bar-fill,.m-bar-fill.tier-mvp{background:linear-gradient(90deg,#ffd93d,#ffb347)}
-.tier-core .m-bar-fill,.m-bar-fill.tier-core{background:linear-gradient(90deg,var(--g300),var(--g500))}
-.tier-main .m-bar-fill,.m-bar-fill.tier-main{background:linear-gradient(90deg,var(--sky),#7bc4e0)}
-.tier-new .m-bar-fill,.m-bar-fill.tier-new{background:var(--g200)}
-.m-bar-rank.tier-mvp{color:#d4a017}
-.m-bar-rank.tier-core{color:var(--g500)}
-.m-bar-rank.tier-main{color:#7bc4e0}
-.m-bar-rank.tier-new{color:var(--g300)}
-
-/* Tier distribution */
-.m-tiers{display:flex;gap:.5rem;margin-top:.8rem}
-.m-tier{flex:1;text-align:center;padding:.5rem .3rem;border-radius:12px;border:1px solid var(--g200);background:#fff}
-.m-tier-icon{font-size:.78rem;font-weight:600}
-.m-tier-count{font-family:var(--num);font-size:1.2rem;color:var(--g500);margin:.1rem 0}
-.m-tier-range{font-size:.62rem;color:var(--tl)}
-.m-tier.tier-mvp{border-color:rgba(255,217,61,.4);background:rgba(255,217,61,.08)}
-.m-tier.tier-core{border-color:rgba(78,192,126,.3);background:rgba(78,192,126,.06)}
 
 /* Multi-dimension tabs */
 .m-dims-tabs{display:flex;gap:.3rem;margin-bottom:.8rem;overflow-x:auto;padding-bottom:.3rem}
@@ -1876,7 +1859,6 @@ const MATCHES=[{c:"杜伦",r:"小组赛一",w:1,b:["宋铮","翦音志"],p:["王
   const totW=PLAYERS.reduce((s,p)=>s+p.w,0);
   const totB=PLAYERS.reduce((s,p)=>s+p.best,0);
   const avgWr=Math.round(totW/totG*1000)/10;
-  function tc(r){return r<=3?'tier-mvp':r<=8?'tier-core':r<=18?'tier-main':'tier-new'}
   let h='';
   // Aggregate
   h+=`<div class="m-section"><div class="m-agg">
@@ -1888,12 +1870,9 @@ const MATCHES=[{c:"杜伦",r:"小组赛一",w:1,b:["宋铮","翦音志"],p:["王
   h+=`<div class="m-section"><div class="m-section-title">📊 完整积分榜（${PLAYERS.length}人）</div><div class="m-bars">`;
   PLAYERS.forEach(p=>{
     const pct=Math.max(2,p.score/maxS*100);
-    h+=`<div class="m-bar-row"><span class="m-bar-rank ${tc(p.rank)}">${p.rank}</span><span class="m-bar-name">${p.name}</span><div class="m-bar-track"><div class="m-bar-fill ${tc(p.rank)}" style="width:${pct}%"></div></div><span class="m-bar-score">${p.score}</span></div>`;
+    h+=`<div class="m-bar-row"><span class="m-bar-rank">${p.rank}</span><span class="m-bar-name">${p.name}</span><div class="m-bar-track"><div class="m-bar-fill" style="width:${pct}%"></div></div><span class="m-bar-score">${p.score}</span></div>`;
   });
-  h+=`</div>`;
-  // Tiers
-  const tiers=[{n:'🥇 MVP',c:'tier-mvp',cnt:PLAYERS.filter(p=>p.rank<=3).length,r:'Top 3'},{n:'💎 核心',c:'tier-core',cnt:PLAYERS.filter(p=>p.rank>=4&&p.rank<=8).length,r:'4-8名'},{n:'⚡ 主力',c:'tier-main',cnt:PLAYERS.filter(p=>p.rank>=9&&p.rank<=18).length,r:'9-18名'},{n:'🌱 新锐',c:'tier-new',cnt:PLAYERS.filter(p=>p.rank>=19).length,r:'19名+'}];
-  h+=`<div class="m-tiers">${tiers.map(t=>`<div class="m-tier ${t.c}"><div class="m-tier-icon">${t.n}</div><div class="m-tier-count">${t.cnt}人</div><div class="m-tier-range">${t.r}</div></div>`).join('')}</div></div>`;
+  h+=`</div></div>`;
   // Multi-dimensional rankings
   const dims=[
     {t:'📊 积分榜',emoji:'📊',sort:(a,b)=>b.score-a.score,val:p=>p.score,u:'分'},
