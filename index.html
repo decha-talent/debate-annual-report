@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>纵横辩论社 · 年度回顾 @2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & VARS ===== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --g50:#f2faf5;--g100:#dcf3e4;--g200:#b3e5c7;--g300:#7dd3a3;
+  --g400:#4ec07e;--g500:#38a169;--g600:#2d8254;
+  --pink:#ffb7c5;--pink-l:#fff0f4;--pink-d:#e8889a;
+  --yellow:#ffd93d;--yellow-l:#fff8e1;
+  --sky:#a0d8ef;--sky-l:#e0f2fb;
+  --cream:#fdfcf9;
+  --td:#1a3328;--tb:#2d4f3d;--tl:#6a9a7a;
+  --shadow:0 4px 20px rgba(40,100,60,.08);
+  --shadow-hover:0 8px 30px rgba(40,100,60,.15);
+  --sans:'Noto Sans SC','PingFang SC',sans-serif;
+  --fun:'ZCOOL KuaiLe',cursive;
+  --hand:'Ma Shan Zheng',cursive;
+  --num:'Bebas Neue',sans-serif;
+  --bounce:cubic-bezier(.34,1.56,.64,1);
+  --smooth:cubic-bezier(.22,1,.36,1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--g50);font-family:var(--sans);color:var(--tb);-webkit-font-smoothing:antialiased;overflow:hidden}
+body.hub-active{overflow:auto}
+
+/* ===== PETALS ===== */
+.petals{position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:hidden}
+.petal{
+  position:absolute;
+  background:var(--pink);
+  border-radius:50% 0 50% 50%;
+  opacity:0;
+  animation:petalFall linear infinite;
+}
+@keyframes petalFall{
+  0%{transform:translateY(-5vh) rotate(0deg) translateX(0);opacity:0}
+  8%{opacity:.45}
+  85%{opacity:.35}
+  100%{transform:translateY(105vh) rotate(400deg) translateX(60px);opacity:0}
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:10000;background:rgba(56,161,105,.12)}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--g400),var(--g500));border-radius:0 2px 2px 0;transition:width .3s linear}
+
+/* ===== SPRING SCENE ===== */
+.scene{
+  position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  background:linear-gradient(180deg,
+    #cce8f4 0%,#d4eee8 8%,#ddf2ea 18%,#e0f5e9 30%,
+    #d0f0df 42%,#c4ebd5 55%,#bce8cf 68%,
+    #ceeeda 80%,#dff0e5 92%,#f0f5ed 100%);
+}
+
+/* Clouds */
+.cloud{position:absolute;z-index:8;background:rgba(255,255,255,.5);border-radius:50%;filter:blur(1px)}
+.cloud::before,.cloud::after{content:'';position:absolute;background:inherit;border-radius:50%}
+.cloud-1{width:120px;height:40px;top:3%;left:5%;animation:cloudDrift 30s linear infinite}
+.cloud-1::before{width:50px;height:30px;top:-15px;left:20px}
+.cloud-1::after{width:60px;height:35px;top:-18px;left:55px}
+.cloud-2{width:100px;height:35px;top:7%;right:8%;animation:cloudDrift 25s linear infinite reverse}
+.cloud-2::before{width:45px;height:28px;top:-14px;left:15px}
+.cloud-2::after{width:50px;height:30px;top:-16px;left:48px}
+.cloud-3{width:80px;height:28px;top:22%;left:62%;animation:cloudDrift 35s linear infinite 5s}
+.cloud-3::before{width:40px;height:22px;top:-12px;left:10px}
+.cloud-3::after{width:45px;height:24px;top:-13px;left:35px}
+@keyframes cloudDrift{0%{transform:translateX(0)}50%{transform:translateX(40px)}100%{transform:translateX(0)}}
+
+/* Distant hills */
+.scene-hills{position:absolute;bottom:14vh;left:0;width:100%;z-index:1}
+
+/* Willow trees */
+.scene-willow{position:absolute;bottom:0;z-index:4}
+.willow-l{left:-2%;width:26vw;max-width:230px}
+.willow-r{right:-1%;width:18vw;max-width:170px;transform:scaleX(-1)}
+.willow-strand{
+  transform-origin:0% 0%;
+  animation:willowSway var(--sd,4s) ease-in-out infinite;
+  animation-delay:var(--dd,0s);
+}
+@keyframes willowSway{
+  0%,100%{transform:rotate(0) translateX(0)}
+  33%{transform:rotate(3deg) translateX(3px)}
+  66%{transform:rotate(-1.5deg) translateX(-1px)}
+}
+
+/* Bridge */
+.scene-bridge{position:absolute;bottom:11vh;left:50%;transform:translateX(-50%);width:26vw;max-width:230px;z-index:2;opacity:.6}
+
+/* Water */
+.scene-water{position:absolute;bottom:0;left:0;width:100%;z-index:3;height:14vh}
+.water-wave{animation:waveMove var(--wd,6s) ease-in-out infinite;animation-delay:var(--wdd,0s)}
+@keyframes waveMove{0%,100%{transform:translateX(0)}50%{transform:translateX(-20px)}}
+
+/* Kites */
+.scene-kite{position:absolute;z-index:9}
+.kite-1{top:5%;right:13%;width:55px;animation:kiteFloat1 7s ease-in-out infinite}
+.kite-2{top:13%;left:9%;width:42px;animation:kiteFloat2 8.5s ease-in-out infinite 2s}
+@keyframes kiteFloat1{
+  0%,100%{transform:translate(0,0) rotate(-5deg)}
+  25%{transform:translate(10px,-14px) rotate(-2deg)}
+  50%{transform:translate(-8px,-6px) rotate(-10deg)}
+  75%{transform:translate(12px,-10px) rotate(-3deg)}
+}
+@keyframes kiteFloat2{
+  0%,100%{transform:translate(0,0) rotate(4deg)}
+  30%{transform:translate(-10px,-12px) rotate(8deg)}
+  60%{transform:translate(6px,-16px) rotate(1deg)}
+  85%{transform:translate(-4px,-5px) rotate(6deg)}
+}
+
+/* Birds (swallows) — individual positioned elements */
+.swallow{
+  position:absolute;z-index:9;
+  animation:swallowFly var(--fd,14s) linear infinite;
+  animation-delay:var(--fdd,0s);
+}
+@keyframes swallowFly{
+  0%{left:-5%;opacity:0}
+  5%{opacity:1}
+  95%{opacity:1}
+  100%{left:105%;opacity:0}
+}
+
+/* Grass & ground */
+.scene-ground{position:absolute;bottom:12vh;left:0;width:100%;z-index:5}
+
+/* Lotus pads */
+.scene-lotus{position:absolute;z-index:5}
+.lotus-1{bottom:4vh;left:18%;width:38px;animation:lotusFloat 5.5s ease-in-out infinite}
+.lotus-2{bottom:3vh;right:22%;width:28px;animation:lotusFloat 6.5s ease-in-out infinite 2s}
+.lotus-3{bottom:5vh;left:40%;width:32px;animation:lotusFloat 7s ease-in-out infinite 3.5s}
+@keyframes lotusFloat{
+  0%,100%{transform:translate(0,0) rotate(0)}
+  50%{transform:translate(4px,2px) rotate(3deg)}
+}
+
+/* Oriole bird on willow */
+.scene-oriole{position:absolute;z-index:6;animation:orioleHop 3s ease-in-out infinite}
+@keyframes orioleHop{
+  0%,100%{transform:translateY(0) rotate(0)}
+  30%{transform:translateY(-4px) rotate(-3deg)}
+  60%{transform:translateY(0) rotate(2deg)}
+}
+
+/* Musical notes near oriole */
+.music-note{position:absolute;z-index:7;opacity:0;animation:noteFloat 4s ease-out infinite}
+.music-note:nth-child(2){animation-delay:1.5s}
+.music-note:nth-child(3){animation-delay:3s}
+@keyframes noteFloat{
+  0%{opacity:0;transform:translate(0,0) scale(.6)}
+  15%{opacity:.6}
+  80%{opacity:.3}
+  100%{opacity:0;transform:translate(15px,-30px) scale(1) rotate(10deg)}
+}
+
+/* ===== OPENING SCREENS (LAYER 1) ===== */
+#opening{position:fixed;inset:0;z-index:100}
+
+.screen{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  opacity:0;pointer-events:none;z-index:1;
+}
+.screen.active{opacity:1;pointer-events:auto;z-index:10}
+
+.skip-btn{
+  position:fixed;top:16px;right:16px;z-index:200;
+  font-family:var(--sans);font-size:.78rem;color:var(--tl);
+  background:rgba(255,255,255,.6);backdrop-filter:blur(8px);
+  border:1px solid var(--g200);border-radius:20px;
+  padding:6px 18px;cursor:pointer;
+  transition:all .3s ease;
+}
+.skip-btn:hover{background:rgba(255,255,255,.9);color:var(--g600)}
+
+/* Screen 1: Hero */
+.s1-icon{font-size:5rem;margin-bottom:1rem;animation:s1Pop .8s var(--bounce) both}
+.s1-year{font-family:var(--num);font-size:1.8rem;color:var(--g500);letter-spacing:.25em;opacity:0;animation:fadeUp .6s .3s var(--smooth) forwards}
+.s1-title{font-size:clamp(3.5rem,15vw,5.5rem);font-weight:900;color:var(--td);letter-spacing:.08em;line-height:1.15;opacity:0;animation:fadeUp .6s .5s var(--smooth) forwards}
+.s1-club{font-family:var(--fun);font-size:clamp(1.8rem,8vw,3rem);color:var(--g600);letter-spacing:.18em;opacity:0;animation:fadeUp .6s .7s var(--smooth) forwards}
+.s1-sub{font-size:.92rem;color:var(--tl);letter-spacing:.4em;margin-top:.6rem;opacity:0;animation:fadeUp .6s .9s var(--smooth) forwards}
+.s1-bar{width:60px;height:3px;border-radius:2px;background:var(--g300);margin-top:1.2rem;opacity:0;animation:fadeUp .6s 1.1s var(--smooth) forwards}
+@keyframes s1Pop{0%{transform:scale(0) rotate(-20deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+
+/* Screen 2: Glory */
+.s2-headline{font-size:clamp(3.5rem,14vw,5.5rem);font-weight:900;color:var(--td);opacity:0;text-align:center}
+.s2-headline.pop{animation:gloryPop .7s var(--bounce) forwards}
+.s2-sub{font-family:var(--fun);font-size:1.4rem;color:var(--g600);margin-top:.4rem;margin-bottom:1.8rem;opacity:0}
+.s2-sub.pop{animation:fadeUp .5s .3s var(--smooth) forwards}
+.s2-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px;max-width:520px;padding:0 1rem}
+.s2-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:8px 20px;border-radius:22px;font-size:.95rem;font-weight:700;
+  opacity:0;transform:translateX(-30px);
+  transition:opacity .4s ease,transform .4s var(--smooth);
+}
+.s2-chip.from-right{transform:translateX(30px)}
+.s2-chip.show{opacity:1;transform:translateX(0)}
+.chip-gold{background:linear-gradient(135deg,#ffd93d,#ffb347);color:#7a5a00}
+.chip-silver{background:linear-gradient(135deg,#e8e8e8,#b8b8b8);color:#4a4a4a}
+@keyframes gloryPop{0%{opacity:0;transform:scale(0)}60%{transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
+
+/* Confetti canvas */
+#confetti{position:fixed;inset:0;z-index:150;pointer-events:none}
+
+/* Screen 3: Stats */
+.s3-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:560px;width:90vw;padding:0 1rem}
+.s3-card{
+  background:rgba(255,255,255,.75);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.5);border-radius:20px;
+  padding:1.6rem 1.2rem;text-align:center;
+  opacity:0;transform:scale(.8);
+}
+.s3-card.show{animation:statPop .5s var(--bounce) forwards}
+.s3-num{font-family:var(--num);font-size:clamp(3rem,12vw,4.2rem);color:var(--g500);line-height:1}
+.s3-plus{font-size:.6em;color:var(--g400)}
+.s3-label{font-size:1rem;color:var(--tb);margin-top:.3rem;font-weight:500}
+.s3-icon{font-size:1.5rem;margin-top:.3rem}
+@keyframes statPop{0%{opacity:0;transform:scale(.8)}60%{transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
+
+/* Screen 4: Highlights */
+.s4-title{font-family:var(--fun);font-size:2rem;color:var(--td);margin-bottom:1.5rem;opacity:0}
+.s4-title.show{animation:fadeUp .5s var(--smooth) forwards}
+.s4-carousel{position:relative;width:360px;max-width:90vw;height:220px;perspective:800px}
+.s4-highlight{
+  position:absolute;inset:0;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.5);border-radius:20px;
+  padding:1.8rem;display:flex;flex-direction:column;justify-content:center;
+  backface-visibility:hidden;
+  transition:transform .7s var(--smooth),opacity .4s ease;
+  cursor:pointer;
+}
+.s4-highlight.back{transform:rotateY(180deg)}
+.s4-star{font-size:2.2rem;margin-bottom:.6rem}
+.s4-name{font-size:1.4rem;font-weight:900;color:var(--td);margin-bottom:.5rem}
+.s4-desc{font-size:.95rem;color:var(--tb);line-height:1.7}
+.s4-dots{display:flex;gap:8px;margin-top:1.2rem}
+.s4-dot{width:8px;height:8px;border-radius:50%;background:var(--g200);cursor:pointer;transition:all .3s ease}
+.s4-dot.active{background:var(--g500);transform:scale(1.3)}
+
+/* Screen 5: Enter */
+.s5-msg{font-family:var(--fun);font-size:clamp(1.6rem,6vw,2.2rem);color:var(--td);margin-bottom:1.8rem;opacity:0}
+.s5-msg.show{animation:fadeUp .6s var(--smooth) forwards}
+.s5-leaf{font-size:2.8rem;margin-bottom:1.2rem;opacity:0}
+.s5-leaf.show{animation:fadeUp .5s .2s var(--smooth) forwards}
+.enter-btn{
+  font-family:var(--fun);font-size:1.3rem;color:#fff;
+  background:linear-gradient(135deg,var(--g400),var(--g500));
+  border:none;border-radius:30px;
+  padding:14px 36px;cursor:pointer;
+  box-shadow:0 4px 20px rgba(56,161,105,.3);
+  opacity:0;
+  transition:transform .3s var(--bounce),box-shadow .3s ease;
+  animation:pulseGlow 2s ease-in-out infinite;
+}
+.enter-btn.show{opacity:1}
+.enter-btn:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(56,161,105,.4)}
+@keyframes pulseGlow{
+  0%,100%{box-shadow:0 4px 20px rgba(56,161,105,.3)}
+  50%{box-shadow:0 4px 30px rgba(56,161,105,.5)}
+}
+
+/* Screen 3b: Leaderboard (积分榜) */
+.s3b-wrap{width:90vw;max-width:600px;text-align:center}
+.s3b-title{font-family:var(--fun);font-size:clamp(2rem,8vw,2.8rem);color:var(--td);margin-bottom:1.2rem;opacity:0}
+.s3b-title.show{animation:fadeUp .5s var(--smooth) forwards}
+.s3b-list{margin-bottom:1.2rem}
+.s3b-row{
+  display:flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,.72);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.4);
+  border-radius:16px;padding:.9rem 1.4rem;margin-bottom:.55rem;
+  opacity:0;transform:translateX(-25px);
+}
+.s3b-row.show{animation:slideInR .45s var(--smooth) forwards}
+.s3b-row.top1{
+  background:linear-gradient(135deg,rgba(255,217,61,.22),rgba(255,179,71,.15));
+  border:1px solid rgba(255,217,61,.35);
+  padding:1.1rem 1.4rem;
+}
+.s3b-rank{font-family:var(--num);font-size:2rem;color:var(--g500);width:42px;text-align:center;flex-shrink:0}
+.s3b-row.top1 .s3b-rank{font-size:2.6rem;color:#d4a017}
+.s3b-name{font-size:1.15rem;font-weight:700;color:var(--td);flex:1;text-align:left}
+.s3b-row.top1 .s3b-name{font-size:1.35rem}
+.s3b-detail{font-size:.78rem;color:var(--tl);white-space:nowrap}
+.s3b-score{font-family:var(--num);font-size:1.6rem;color:var(--g500);margin-left:.5rem;flex-shrink:0}
+.s3b-row.top1 .s3b-score{font-size:2rem;color:#d4a017}
+.s3b-awards{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem .8rem}
+.s3b-award{
+  background:rgba(255,255,255,.65);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.4);border-radius:14px;
+  padding:.55rem 1rem;font-size:.88rem;color:var(--td);font-weight:500;
+  opacity:0;
+}
+.s3b-award.show{animation:fadeUp .4s var(--smooth) forwards}
+.s3b-award-val{font-family:var(--num);font-size:1.05rem;color:var(--g500);margin-left:.2rem}
+@keyframes slideInR{
+  0%{opacity:0;transform:translateX(-25px)}
+  100%{opacity:1;transform:translateX(0)}
+}
+
+/* ===== TRANSITION EFFECTS ===== */
+
+/* T1: Spotlight — dark vignette with expanding circle hole */
+.spot-vignette{
+  position:fixed;inset:0;z-index:120;pointer-events:none;
+}
+.spot-hole{
+  position:absolute;top:50%;left:50%;
+  width:10px;height:10px;border-radius:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 0 200vmax rgba(26,51,40,.92);
+  transition:width 1s cubic-bezier(.22,1,.36,1),height 1s cubic-bezier(.22,1,.36,1);
+}
+.spot-hole.open{width:250vmax;height:250vmax}
+
+/* T2: Fragment overlay — 5×4 grid that shatters */
+.frag-overlay{
+  position:fixed;inset:0;z-index:120;
+  display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(4,1fr);
+  pointer-events:none;
+}
+.frag-cell{
+  position:relative;opacity:1;
+  transition:transform 1.2s cubic-bezier(.23,1,.32,1),opacity 1s ease;
+  box-shadow:inset 0 0 0 .5px rgba(255,255,255,.15);
+}
+.frag-cell.scatter{opacity:0}
+
+/* T3: 3D book-page flip */
+.flip-shadow{
+  position:fixed;inset:0;z-index:115;pointer-events:none;
+  background:rgba(26,51,40,0);
+  transition:background .6s ease;
+}
+.flip-shadow.dim{background:rgba(26,51,40,.22)}
+.flip-edge{
+  position:fixed;top:0;bottom:0;width:6px;z-index:116;pointer-events:none;
+  background:linear-gradient(90deg,rgba(26,51,40,.12),rgba(26,51,40,.03),transparent);
+  transition:left 1s ease-in-out,opacity .4s ease;
+  opacity:0;
+}
+.flip-edge.show{opacity:1}
+
+/* T4: Vortex — ripple rings from center */
+.ripple-ring{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  border-radius:50%;width:0;height:0;
+  pointer-events:none;z-index:130;
+  animation:rippleExpand 1.4s ease-out forwards;
+}
+@keyframes rippleExpand{
+  0%{width:0;height:0;opacity:.8;border:3px solid var(--g300)}
+  70%{opacity:.3}
+  100%{width:160vmax;height:160vmax;opacity:0;border:1px solid var(--g100)}
+}
+
+/* Center flash burst */
+.center-flash{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  border-radius:50%;pointer-events:none;z-index:135;
+  background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(78,192,126,.4) 40%,transparent 70%);
+  animation:flashBurst .7s ease-out forwards;
+}
+@keyframes flashBurst{
+  0%{width:10px;height:10px;opacity:1}
+  40%{opacity:.8}
+  100%{width:250px;height:250px;opacity:0}
+}
+
+/* Sparkle particles */
+.sparkle{
+  position:fixed;border-radius:50%;
+  pointer-events:none;z-index:140;
+  animation:sparkleFly 1s ease-out forwards;
+}
+@keyframes sparkleFly{
+  0%{opacity:1;transform:translate(0,0) scale(1)}
+  100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(0)}
+}
+
+/* Transition particle trail for spotlight edge */
+.spot-particle{
+  position:fixed;border-radius:50%;
+  pointer-events:none;z-index:125;
+  background:rgba(255,255,255,.7);
+  animation:spotParticle .8s ease-out forwards;
+}
+@keyframes spotParticle{
+  0%{opacity:.8;transform:scale(1)}
+  100%{opacity:0;transform:scale(0) translateY(-30px)}
+}
+
+/* ===== HUB (LAYER 2) ===== */
+#hub{
+  display:none;position:relative;z-index:50;
+  max-width:680px;margin:0 auto;padding:2rem 1.5rem 3rem;
+  opacity:0;
+}
+#hub.active{display:block;animation:fadeUp .8s var(--smooth) forwards}
+
+.hub-header{text-align:center;margin-bottom:2rem}
+.hub-icon{font-size:2.5rem;margin-bottom:.5rem}
+.hub-title{font-size:clamp(1.8rem,7vw,2.5rem);font-weight:900;color:var(--td)}
+.hub-sub{font-family:var(--hand);font-size:1rem;color:var(--tl);margin-top:.3rem}
+
+.hub-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+.hub-card{
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-radius:20px;padding:1.5rem 1.2rem;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(255,255,255,.5);
+  cursor:pointer;text-align:center;
+  transition:transform .4s var(--bounce),box-shadow .3s ease;
+  opacity:0;transform:translateY(30px);
+}
+.hub-card.vis{opacity:1;transform:translateY(0);transition:opacity .6s ease,transform .6s var(--smooth)}
+.hub-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.hub-card:active{transform:scale(.97)}
+
+.hc-icon{font-size:2.2rem;margin-bottom:.5rem}
+.hc-title{font-size:1rem;font-weight:900;color:var(--td);margin-bottom:.3rem}
+.hc-desc{font-size:.75rem;color:var(--tl);line-height:1.5}
+.hc-num{font-family:var(--num);font-size:1.6rem;color:var(--g500);margin-top:.4rem}
+
+.hub-footer{text-align:center;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--g200)}
+.hub-footer-brand{font-family:var(--fun);font-size:1rem;color:var(--g500);letter-spacing:.1em}
+.hub-footer-msg{font-family:var(--hand);font-size:.92rem;color:var(--tl);margin-top:.3rem}
+.hub-footer-credit{font-size:.68rem;color:var(--tl);margin-top:.8rem;letter-spacing:.05em}
+
+/* ===== MODAL (LAYER 3) ===== */
+.modal-overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(26,51,40,.5);backdrop-filter:blur(4px);
+  display:none;align-items:flex-end;justify-content:center;
+  opacity:0;transition:opacity .3s ease;
+}
+.modal-overlay.open{display:flex;opacity:1}
+
+.modal-sheet{
+  background:#fff;border-radius:24px 24px 0 0;
+  width:100%;max-width:680px;
+  max-height:85vh;overflow-y:auto;
+  padding:1.5rem 1.5rem 2rem;
+  transform:translateY(100%);
+  transition:transform .4s var(--smooth);
+}
+.modal-overlay.open .modal-sheet{transform:translateY(0)}
+
+.modal-handle{width:40px;height:4px;background:var(--g200);border-radius:2px;margin:0 auto 1rem}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--g100);border:none;cursor:pointer;
+  font-size:1rem;color:var(--tl);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s ease;
+}
+.modal-close:hover{background:var(--g200)}
+
+.modal-header{position:relative;margin-bottom:1.2rem}
+.modal-icon{font-size:2rem;margin-bottom:.3rem}
+.modal-title{font-size:1.4rem;font-weight:900;color:var(--td)}
+.modal-subtitle{font-size:.82rem;color:var(--tl);margin-top:.2rem}
+
+/* Modal content shared styles */
+.m-section{margin-bottom:1.5rem}
+.m-section-title{font-family:var(--fun);font-size:1.1rem;color:var(--g600);margin-bottom:.8rem;display:flex;align-items:center;gap:6px}
+
+/* Accordion for race details */
+.m-accordion{border:1px solid var(--g200);border-radius:14px;overflow:hidden;margin-bottom:.6rem}
+.m-acc-header{
+  padding:.8rem 1rem;background:var(--g50);cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:.88rem;font-weight:700;color:var(--td);
+  transition:background .2s ease;
+}
+.m-acc-header:hover{background:var(--g100)}
+.m-acc-arrow{font-size:.7rem;color:var(--tl);transition:transform .3s ease}
+.m-accordion.open .m-acc-arrow{transform:rotate(180deg)}
+.m-acc-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.m-accordion.open .m-acc-body{max-height:600px}
+.m-acc-content{padding:.8rem 1rem;font-size:.82rem;color:var(--tb);line-height:1.7}
+
+/* Rank table */
+.m-rank{width:100%;border-collapse:collapse;font-size:.8rem}
+.m-rank th{background:var(--g100);color:var(--g600);font-weight:700;padding:8px 6px;text-align:left}
+.m-rank td{padding:8px 6px;border-bottom:1px solid var(--g100)}
+.m-rank tr:hover td{background:var(--g50)}
+.m-rank .rank-num{font-family:var(--num);font-size:1.1rem;color:var(--g500)}
+
+/* Award cards in modal */
+.m-awards{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.m-award{
+  background:var(--g50);border-radius:14px;padding:.8rem;text-align:center;
+  border:1px solid var(--g200);
+}
+.m-award-label{font-size:.72rem;color:var(--tl);margin-bottom:.2rem}
+.m-award-name{font-size:.88rem;font-weight:700;color:var(--td)}
+.m-award-val{font-family:var(--num);font-size:1.2rem;color:var(--g500)}
+
+/* Aggregate stats row */
+.m-agg{display:flex;justify-content:center;gap:1.2rem;margin-bottom:.5rem}
+.m-agg-item{text-align:center;padding:.6rem .8rem;background:var(--g50);border-radius:14px;border:1px solid var(--g200);flex:1}
+.m-agg-val{font-family:var(--num);font-size:1.6rem;color:var(--g500)}
+.m-agg-label{font-size:.72rem;color:var(--tl)}
+
+/* Full bar chart */
+.m-bars{max-height:55vh;overflow-y:auto;padding-right:.3rem}
+.m-bar-row{display:flex;align-items:center;gap:.4rem;padding:3px 0;border-bottom:1px solid rgba(0,0,0,.03)}
+.m-bar-rank{font-family:var(--num);font-size:.85rem;width:22px;text-align:center;flex-shrink:0;font-weight:700}
+.m-bar-name{font-size:.75rem;color:var(--td);width:60px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m-bar-track{flex:1;height:16px;background:var(--g50);border-radius:8px;overflow:hidden}
+.m-bar-fill{height:100%;border-radius:8px;transition:width 1.2s var(--smooth)}
+.m-bar-score{font-family:var(--num);font-size:.8rem;color:var(--tl);width:28px;text-align:right;flex-shrink:0}
+.tier-mvp .m-bar-fill,.m-bar-fill.tier-mvp{background:linear-gradient(90deg,#ffd93d,#ffb347)}
+.tier-core .m-bar-fill,.m-bar-fill.tier-core{background:linear-gradient(90deg,var(--g300),var(--g500))}
+.tier-main .m-bar-fill,.m-bar-fill.tier-main{background:linear-gradient(90deg,var(--sky),#7bc4e0)}
+.tier-new .m-bar-fill,.m-bar-fill.tier-new{background:var(--g200)}
+.m-bar-rank.tier-mvp{color:#d4a017}
+.m-bar-rank.tier-core{color:var(--g500)}
+.m-bar-rank.tier-main{color:#7bc4e0}
+.m-bar-rank.tier-new{color:var(--g300)}
+
+/* Tier distribution */
+.m-tiers{display:flex;gap:.5rem;margin-top:.8rem}
+.m-tier{flex:1;text-align:center;padding:.5rem .3rem;border-radius:12px;border:1px solid var(--g200);background:#fff}
+.m-tier-icon{font-size:.78rem;font-weight:600}
+.m-tier-count{font-family:var(--num);font-size:1.2rem;color:var(--g500);margin:.1rem 0}
+.m-tier-range{font-size:.62rem;color:var(--tl)}
+.m-tier.tier-mvp{border-color:rgba(255,217,61,.4);background:rgba(255,217,61,.08)}
+.m-tier.tier-core{border-color:rgba(78,192,126,.3);background:rgba(78,192,126,.06)}
+
+/* Multi-dimension tabs */
+.m-dims-tabs{display:flex;gap:.3rem;margin-bottom:.8rem;overflow-x:auto;padding-bottom:.3rem}
+.m-dim-tab{
+  font-size:.75rem;padding:.4rem .7rem;border-radius:10px;border:1px solid var(--g200);
+  background:#fff;color:var(--tl);cursor:pointer;white-space:nowrap;font-family:var(--sans);
+  transition:all .2s ease;
+}
+.m-dim-tab.active{background:var(--g500);color:#fff;border-color:var(--g500)}
+.m-dim-panel{display:none}
+.m-dim-panel.active{display:block}
+.m-dim-title{font-size:.88rem;font-weight:700;color:var(--td);margin-bottom:.5rem}
+.m-dim-row{display:flex;align-items:center;gap:.5rem;padding:.45rem .6rem;border-radius:10px;margin-bottom:.3rem;background:var(--g50)}
+.m-dim-row:first-child{background:linear-gradient(135deg,rgba(255,217,61,.15),rgba(255,179,71,.1))}
+.m-dim-rank{font-family:var(--num);font-size:1.1rem;color:var(--g500);width:24px}
+.m-dim-name{font-size:.88rem;font-weight:600;color:var(--td);flex:1}
+.m-dim-val{font-family:var(--num);font-size:1rem;color:var(--g500)}
+
+/* Testimonial cards */
+.m-testimony{
+  background:var(--g50);border-radius:14px;padding:1rem;margin-bottom:.8rem;
+  border-left:3px solid var(--g300);
+}
+.m-testimony-text{font-size:.82rem;color:var(--tb);line-height:1.7;margin-bottom:.5rem;font-style:italic}
+.m-testimony-name{font-size:.78rem;font-weight:700;color:var(--g600)}
+
+/* ===== NAME INPUT OVERLAY ===== */
+.name-overlay{
+  position:fixed;inset:0;z-index:200;
+  display:none;align-items:center;justify-content:center;flex-direction:column;
+  background:rgba(220,243,228,.85);backdrop-filter:blur(16px);
+}
+.name-overlay.open{display:flex}
+.name-label{font-family:var(--fun);font-size:clamp(1.4rem,5vw,2rem);color:var(--td);margin-bottom:1.2rem;text-align:center}
+.name-input{
+  font-family:var(--sans);font-size:1.2rem;color:var(--td);
+  background:rgba(255,255,255,.8);border:2px solid var(--g300);
+  border-radius:16px;padding:.9rem 1.4rem;width:280px;text-align:center;
+  outline:none;transition:border-color .3s ease;
+}
+.name-input:focus{border-color:var(--g500)}
+.name-input::placeholder{color:var(--g300)}
+.name-err{font-size:.82rem;color:#e05252;margin-top:.5rem;min-height:1.2em}
+.name-btns{display:flex;gap:1rem;margin-top:1.2rem}
+.name-go{
+  font-family:var(--fun);font-size:1rem;color:#fff;
+  background:linear-gradient(135deg,var(--g400),var(--g500));
+  border:none;border-radius:24px;padding:.7rem 2rem;cursor:pointer;
+  transition:transform .3s var(--bounce);
+}
+.name-go:hover{transform:scale(1.05)}
+.name-skip{
+  font-family:var(--sans);font-size:.85rem;color:var(--tl);
+  background:none;border:1px solid var(--g200);border-radius:24px;
+  padding:.7rem 1.5rem;cursor:pointer;transition:background .2s ease;
+}
+.name-skip:hover{background:rgba(255,255,255,.5)}
+
+/* ===== PERSONAL REVIEW ===== */
+#personalReview{
+  display:none;position:relative;z-index:50;
+  max-width:680px;margin:0 auto;padding:2.5rem 1.5rem 3rem;
+}
+#personalReview::before{
+  content:'';position:fixed;inset:0;z-index:-1;
+  background:rgba(235,245,238,.88);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+#personalReview.active{display:block}
+
+.pr-section{margin-bottom:2.5rem;opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s var(--smooth)}
+.pr-section.vis{opacity:1;transform:translateY(0)}
+
+/* Greeting */
+.pr-greet{text-align:center;padding:2rem 0}
+.pr-hi{font-family:var(--fun);font-size:clamp(2rem,8vw,3rem);color:var(--td)}
+.pr-sub{font-family:var(--hand);font-size:1.2rem;color:var(--tl);margin-top:.3rem}
+
+/* Stats 4-grid */
+.pr-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.pr-stat{
+  background:rgba(255,255,255,.78);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.5);border-radius:18px;
+  padding:1.3rem 1rem;text-align:center;
+}
+.pr-stat-val{font-family:var(--num);font-size:clamp(2rem,8vw,2.8rem);color:var(--g500);line-height:1}
+.pr-stat-label{font-size:.85rem;color:var(--tl);margin-top:.2rem}
+.pr-stat-sub{font-size:.72rem;color:var(--g300);margin-top:.1rem}
+
+/* Radar */
+.pr-radar-wrap{text-align:center}
+.pr-radar-title{font-family:var(--fun);font-size:1.5rem;color:var(--td);margin-bottom:1rem}
+.pr-radar{margin:0 auto}
+.pr-tag{
+  display:inline-block;font-family:var(--fun);font-size:1.4rem;
+  color:#fff;
+  background:linear-gradient(135deg,var(--g400),var(--g500));
+  border-radius:24px;padding:.6rem 1.8rem;margin-top:1.2rem;
+  box-shadow:0 4px 16px rgba(56,161,105,.3);
+  animation:tagPulse 2s ease-in-out infinite;
+  letter-spacing:.08em;
+}
+@keyframes tagPulse{
+  0%,100%{box-shadow:0 4px 16px rgba(56,161,105,.3);transform:scale(1)}
+  50%{box-shadow:0 6px 28px rgba(56,161,105,.5);transform:scale(1.04)}
+}
+
+/* Position analysis */
+.pr-pos-title{font-family:var(--fun);font-size:1.3rem;color:var(--td);margin-bottom:.3rem}
+.pr-pos-main{font-size:1.6rem;font-weight:900;color:var(--g500);margin-bottom:1rem}
+.pr-pos-bars{margin-bottom:1rem}
+.pr-pos-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
+.pr-pos-name{font-size:.88rem;font-weight:700;color:var(--td);width:3rem;text-align:right}
+.pr-pos-bar{flex:1;height:22px;background:var(--g100);border-radius:11px;overflow:hidden;position:relative}
+.pr-pos-fill{height:100%;border-radius:11px;transition:width 1s var(--smooth);width:0}
+.pr-pos-fill.green{background:linear-gradient(90deg,var(--g300),var(--g400))}
+.pr-pos-fill.blue{background:linear-gradient(90deg,var(--sky),#7bc4e0)}
+.pr-pos-fill.pink{background:linear-gradient(90deg,var(--pink),var(--pink-d))}
+.pr-pos-num{font-size:.75rem;color:var(--tl);width:4.5rem;white-space:nowrap}
+.pr-pos-tag{
+  display:inline-block;font-size:.88rem;font-weight:500;
+  color:var(--g600);background:var(--g50);border:1px solid var(--g200);
+  border-radius:12px;padding:.3rem .8rem;margin-top:.3rem;margin-right:.4rem;
+}
+
+/* Timeline */
+.pr-tl-title{font-family:var(--fun);font-size:1.5rem;color:var(--td);margin-bottom:1rem}
+
+/* City route map */
+.pr-cities{
+  background:rgba(255,255,255,.65);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.4);border-radius:18px;
+  padding:1.2rem;margin-bottom:1.5rem;text-align:center;
+}
+.pr-cities-title{font-size:.92rem;color:var(--tl);margin-bottom:.8rem}
+.pr-cities-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.3rem}
+.pr-city{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:.4rem .8rem;border-radius:12px;font-size:.85rem;font-weight:600;
+  background:var(--g100);color:var(--g600);
+}
+.pr-city.active{background:linear-gradient(135deg,var(--g400),var(--g500));color:#fff;box-shadow:0 2px 8px rgba(56,161,105,.25)}
+.pr-city-arrow{color:var(--g300);font-size:.7rem}
+.pr-city-count{font-size:.72rem;font-weight:400;opacity:.8}
+
+.pr-tl{overflow-x:auto;padding-bottom:1rem;-webkit-overflow-scrolling:touch}
+.pr-tl-track{display:flex;gap:0;min-width:max-content;align-items:flex-end;padding:0 .5rem}
+.pr-tl-item{
+  display:flex;flex-direction:column;align-items:center;width:72px;flex-shrink:0;
+}
+.pr-tl-dot{
+  width:20px;height:20px;border-radius:50%;border:2.5px solid var(--g300);
+  background:#fff;margin-bottom:.4rem;position:relative;
+}
+.pr-tl-dot.win{background:var(--g400);border-color:var(--g500)}
+.pr-tl-dot.loss{background:#e8889a;border-color:#d66}
+.pr-tl-dot.best::after{content:'⭐';position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:.75rem}
+.pr-tl-dot.streak::before{content:'🔥';position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:.7rem}
+.pr-tl-line{width:100%;height:2px;background:var(--g200);margin-bottom:.4rem}
+.pr-tl-comp{font-size:.72rem;color:var(--tb);text-align:center;line-height:1.3;max-width:72px;font-weight:500}
+.pr-tl-round{font-size:.62rem;color:var(--tl)}
+
+/* Comparison */
+.pr-cmp-title{font-family:var(--fun);font-size:1.3rem;color:var(--td);margin-bottom:1rem}
+.pr-cmp-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem}
+.pr-cmp-label{font-size:.85rem;font-weight:700;color:var(--td);width:4rem;text-align:right}
+.pr-cmp-track{flex:1;height:18px;background:var(--g100);border-radius:9px;position:relative;overflow:hidden}
+.pr-cmp-avg{position:absolute;top:0;height:100%;width:2px;background:var(--td);opacity:.3;z-index:2}
+.pr-cmp-fill{height:100%;border-radius:9px;transition:width 1s var(--smooth);width:0}
+.pr-cmp-fill.above{background:linear-gradient(90deg,var(--g300),var(--g500))}
+.pr-cmp-fill.below{background:linear-gradient(90deg,#f0c040,#e8889a)}
+.pr-cmp-val{font-size:.78rem;color:var(--tl);width:5rem;white-space:nowrap}
+
+/* Teammates */
+.pr-tm-title{font-family:var(--fun);font-size:1.3rem;color:var(--td);margin-bottom:1rem}
+.pr-tm-card{
+  background:rgba(255,255,255,.72);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.4);border-radius:16px;
+  padding:1rem 1.2rem;margin-bottom:.6rem;
+  display:flex;align-items:center;gap:.8rem;
+}
+.pr-tm-icon{font-size:1.5rem;flex-shrink:0}
+.pr-tm-info{flex:1}
+.pr-tm-line{font-size:.92rem;font-weight:700;color:var(--td)}
+.pr-tm-detail{font-size:.78rem;color:var(--tl);margin-top:.1rem}
+
+/* Commentary */
+.pr-comment{
+  text-align:center;
+  background:rgba(255,255,255,.72);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.4);border-radius:20px;
+  padding:2rem 1.5rem;
+}
+.pr-comment-text{font-size:1.05rem;color:var(--td);line-height:2;margin-bottom:.8rem}
+.pr-comment-end{font-family:var(--hand);font-size:1rem;color:var(--g500)}
+
+/* Ending */
+.pr-ending{text-align:center;padding:1.5rem 0}
+.pr-end-msg{font-family:var(--fun);font-size:1.3rem;color:var(--td);margin-bottom:1.2rem}
+.pr-end-btn{
+  font-family:var(--fun);font-size:1.1rem;color:#fff;
+  background:linear-gradient(135deg,var(--g400),var(--g500));
+  border:none;border-radius:28px;padding:.8rem 2.5rem;cursor:pointer;
+  box-shadow:0 4px 16px rgba(56,161,105,.25);
+  transition:transform .3s var(--bounce);
+}
+.pr-end-btn:hover{transform:scale(1.05)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:400px){
+  .hub-grid{grid-template-columns:1fr}
+  .s3-grid{grid-template-columns:1fr 1fr;gap:.8rem}
+  .m-awards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-fill" id="prog"></div></div>
+<div class="petals" id="petals"></div>
+<canvas id="confetti"></canvas>
+
+<div class="scene">
+  <!-- Clouds -->
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+
+  <!-- Distant hills (苏堤远山) -->
+  <svg class="scene-hills" viewBox="0 0 1000 100" preserveAspectRatio="none" fill="none">
+    <path d="M0 90 Q80 50 180 70 Q280 30 400 60 Q500 20 600 55 Q720 25 820 60 Q900 40 1000 65 L1000 100 L0 100Z" fill="#a8d5a0" opacity=".18"/>
+    <path d="M0 95 Q120 65 250 80 Q380 50 500 75 Q650 45 780 70 Q880 55 1000 78 L1000 100 L0 100Z" fill="#8ec98a" opacity=".12"/>
+  </svg>
+
+  <!-- Kite 1 (diamond / 菱形风筝) -->
+  <svg class="scene-kite kite-1" viewBox="0 0 60 110" fill="none">
+    <path d="M30 5 L55 35 L30 60 L5 35Z" fill="#ff6b6b" stroke="#e05252" stroke-width="1.5"/>
+    <path d="M30 5 L30 60 M5 35 L55 35" stroke="#c0392b" stroke-width=".8" opacity=".4"/>
+    <circle cx="30" cy="35" r="6" fill="#ffd93d" opacity=".7"/>
+    <path d="M30 60 Q36 72 28 82 Q22 90 30 98 Q34 104 28 110" stroke="#888" stroke-width=".8" fill="none"/>
+    <path d="M24 72 Q30 68 36 72" stroke="#ffd93d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M22 88 Q28 84 34 88" stroke="#4ec07e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M24 102 Q30 98 34 102" stroke="#a0d8ef" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </svg>
+
+  <!-- Kite 2 (butterfly / 蝴蝶风筝) -->
+  <svg class="scene-kite kite-2" viewBox="0 0 60 85" fill="none">
+    <path d="M30 22 Q8 8 12 32 Q16 48 30 38Z" fill="#a0d8ef" opacity=".8" stroke="#7bc4e0" stroke-width="1"/>
+    <path d="M30 22 Q52 8 48 32 Q44 48 30 38Z" fill="#a0d8ef" opacity=".8" stroke="#7bc4e0" stroke-width="1"/>
+    <path d="M30 38 Q12 42 16 52 Q20 58 30 50Z" fill="#ffb7c5" opacity=".7" stroke="#e8889a" stroke-width="1"/>
+    <path d="M30 38 Q48 42 44 52 Q40 58 30 50Z" fill="#ffb7c5" opacity=".7" stroke="#e8889a" stroke-width="1"/>
+    <line x1="30" y1="18" x2="30" y2="55" stroke="#666" stroke-width="1.5"/>
+    <path d="M30 20 Q24 12 20 8" stroke="#666" stroke-width="1" fill="none"/>
+    <path d="M30 20 Q36 12 40 8" stroke="#666" stroke-width="1" fill="none"/>
+    <circle cx="20" cy="8" r="1.5" fill="#666"/>
+    <circle cx="40" cy="8" r="1.5" fill="#666"/>
+    <path d="M30 55 Q34 66 28 74 Q25 80 30 85" stroke="#888" stroke-width=".8" fill="none"/>
+  </svg>
+
+  <!-- Swallows (燕子) — individual elements -->
+  <svg class="swallow" style="top:11%;width:20px;--fd:13s;--fdd:0s" viewBox="0 0 22 10" fill="none">
+    <path d="M0 7 Q5 3 11 0 Q17 3 22 7 Q17 5 11 3 Q5 5 0 7Z" fill="#2d3436" opacity=".6"/>
+  </svg>
+  <svg class="swallow" style="top:16%;width:16px;--fd:17s;--fdd:4s" viewBox="0 0 22 10" fill="none">
+    <path d="M0 7 Q5 3 11 0 Q17 3 22 7 Q17 5 11 3 Q5 5 0 7Z" fill="#2d3436" opacity=".45"/>
+  </svg>
+  <svg class="swallow" style="top:8%;width:14px;--fd:11s;--fdd:8s" viewBox="0 0 22 10" fill="none">
+    <path d="M0 7 Q5 3 11 0 Q17 3 22 7 Q17 5 11 3 Q5 5 0 7Z" fill="#2d3436" opacity=".4"/>
+  </svg>
+
+  <!-- Willow tree LEFT (柳浪闻莺) -->
+  <svg class="scene-willow willow-l" viewBox="0 0 220 520" fill="none">
+    <!-- Trunk -->
+    <path d="M115 520 Q110 460 106 400 Q102 350 104 310 Q106 280 110 255 Q114 235 118 220" stroke="#8B6914" stroke-width="12" stroke-linecap="round"/>
+    <!-- Main branches -->
+    <path d="M106 310 Q72 290 38 315" stroke="#7a5c1e" stroke-width="6" stroke-linecap="round"/>
+    <path d="M110 280 Q145 258 178 285" stroke="#7a5c1e" stroke-width="5" stroke-linecap="round"/>
+    <path d="M114 250 Q88 230 62 248" stroke="#7a5c1e" stroke-width="4" stroke-linecap="round"/>
+    <path d="M118 235 Q140 220 158 240" stroke="#7a5c1e" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Leaf canopy glow -->
+    <ellipse cx="105" cy="260" rx="65" ry="45" fill="#5cb85c" opacity=".2"/>
+    <ellipse cx="100" cy="250" rx="50" ry="35" fill="#6ab04c" opacity=".15"/>
+    <!-- Drooping willow strands -->
+    <path class="willow-strand" style="--sd:3.5s;--dd:0s" d="M42 312 Q36 370 30 430 Q27 460 32 490" stroke="#4a9e3f" stroke-width="2" opacity=".7"/>
+    <path class="willow-strand" style="--sd:4.2s;--dd:.3s" d="M55 305 Q47 365 40 435 Q38 460 43 485" stroke="#5cb85c" stroke-width="1.8" opacity=".6"/>
+    <path class="willow-strand" style="--sd:3.8s;--dd:.6s" d="M48 318 Q40 375 35 450" stroke="#4a9e3f" stroke-width="1.5" opacity=".55"/>
+    <path class="willow-strand" style="--sd:4s;--dd:.15s" d="M172 283 Q178 345 182 415 Q184 445 180 475" stroke="#5cb85c" stroke-width="2" opacity=".7"/>
+    <path class="willow-strand" style="--sd:3.6s;--dd:.5s" d="M160 288 Q165 350 168 425" stroke="#4a9e3f" stroke-width="1.8" opacity=".6"/>
+    <path class="willow-strand" style="--sd:4.5s;--dd:.2s" d="M155 282 Q162 348 165 430" stroke="#5cb85c" stroke-width="1.5" opacity=".5"/>
+    <path class="willow-strand" style="--sd:3.9s;--dd:.1s" d="M108 255 Q100 325 92 405 Q88 440 94 470" stroke="#4a9e3f" stroke-width="1.8" opacity=".65"/>
+    <path class="willow-strand" style="--sd:4.3s;--dd:.4s" d="M118 240 Q125 315 130 400 Q132 430 128 460" stroke="#5cb85c" stroke-width="1.5" opacity=".6"/>
+    <path class="willow-strand" style="--sd:3.7s;--dd:.7s" d="M66 246 Q58 315 52 400" stroke="#4a9e3f" stroke-width="1.5" opacity=".5"/>
+    <path class="willow-strand" style="--sd:4.1s;--dd:.35s" d="M155 238 Q160 308 162 395" stroke="#5cb85c" stroke-width="1.5" opacity=".5"/>
+    <!-- Leaf dots on strands -->
+    <circle cx="30" cy="430" r="3.5" fill="#6ab04c" opacity=".5"/>
+    <circle cx="40" cy="400" r="3" fill="#5cb85c" opacity=".45"/>
+    <circle cx="182" cy="400" r="3.5" fill="#6ab04c" opacity=".5"/>
+    <circle cx="92" cy="380" r="3" fill="#5cb85c" opacity=".4"/>
+    <circle cx="130" cy="370" r="2.5" fill="#6ab04c" opacity=".4"/>
+    <circle cx="52" cy="380" r="2.5" fill="#5cb85c" opacity=".35"/>
+    <!-- Peach blossoms (桃花) on a branch -->
+    <circle cx="60" cy="244" r="5" fill="#ffb7c5" opacity=".6"/>
+    <circle cx="68" cy="238" r="4" fill="#ffb7c5" opacity=".5"/>
+    <circle cx="55" cy="252" r="3.5" fill="#ffb7c5" opacity=".45"/>
+    <circle cx="74" cy="246" r="3" fill="#ff9ab0" opacity=".4"/>
+  </svg>
+
+  <!-- Oriole bird (莺) on left willow -->
+  <svg class="scene-oriole" style="left:16vw;top:42%;width:28px" viewBox="0 0 30 25" fill="none">
+    <ellipse cx="15" cy="14" rx="8" ry="6" fill="#f0c040"/>
+    <ellipse cx="15" cy="13" rx="7" ry="5" fill="#f5d060"/>
+    <circle cx="10" cy="12" r="1.2" fill="#333"/>
+    <path d="M6 13 L3 12 L6 14" fill="#e67e22"/>
+    <path d="M20 16 Q25 14 28 18" stroke="#8B6914" stroke-width="1" fill="none"/>
+    <path d="M12 19 L10 23" stroke="#8B6914" stroke-width="1"/>
+    <path d="M18 19 L20 23" stroke="#8B6914" stroke-width="1"/>
+  </svg>
+  <!-- Musical notes (闻莺) -->
+  <svg class="music-note" style="left:calc(16vw + 30px);top:40%;width:12px" viewBox="0 0 12 16"><text x="0" y="13" font-size="14" fill="#f0c040" opacity=".7">♪</text></svg>
+  <svg class="music-note" style="left:calc(16vw + 38px);top:39%;width:10px" viewBox="0 0 12 16"><text x="0" y="13" font-size="12" fill="#f5d060" opacity=".5">♫</text></svg>
+
+  <!-- Willow tree RIGHT (smaller, mirrored) -->
+  <svg class="scene-willow willow-r" viewBox="0 0 180 450" fill="none">
+    <path d="M90 450 Q87 400 85 350 Q83 310 86 280 Q89 258 92 242" stroke="#8B6914" stroke-width="9" stroke-linecap="round"/>
+    <path d="M85 290 Q58 275 35 298" stroke="#7a5c1e" stroke-width="4" stroke-linecap="round"/>
+    <path d="M88 268 Q115 252 140 275" stroke="#7a5c1e" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M90 255 Q72 240 55 255" stroke="#7a5c1e" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="85" cy="270" rx="50" ry="35" fill="#5cb85c" opacity=".18"/>
+    <path class="willow-strand" style="--sd:4s;--dd:.1s" d="M38 296 Q32 350 28 410" stroke="#4a9e3f" stroke-width="1.8" opacity=".65"/>
+    <path class="willow-strand" style="--sd:3.7s;--dd:.4s" d="M48 292 Q42 355 38 420" stroke="#5cb85c" stroke-width="1.5" opacity=".55"/>
+    <path class="willow-strand" style="--sd:4.3s;--dd:.2s" d="M136 273 Q142 335 145 405" stroke="#5cb85c" stroke-width="1.8" opacity=".65"/>
+    <path class="willow-strand" style="--sd:3.9s;--dd:.5s" d="M125 278 Q130 340 133 410" stroke="#4a9e3f" stroke-width="1.5" opacity=".55"/>
+    <path class="willow-strand" style="--sd:4.1s;--dd:.3s" d="M88 260 Q82 330 78 400" stroke="#4a9e3f" stroke-width="1.5" opacity=".6"/>
+    <path class="willow-strand" style="--sd:3.6s;--dd:.6s" d="M58 253 Q52 318 48 390" stroke="#5cb85c" stroke-width="1.5" opacity=".5"/>
+    <circle cx="28" cy="390" r="3" fill="#6ab04c" opacity=".45"/>
+    <circle cx="145" cy="380" r="3" fill="#5cb85c" opacity=".4"/>
+  </svg>
+
+  <!-- Bridge (苏堤拱桥) -->
+  <svg class="scene-bridge" viewBox="0 0 300 100" fill="none">
+    <!-- Water reflection -->
+    <ellipse cx="150" cy="95" rx="120" ry="12" fill="#8cc4d8" opacity=".12"/>
+    <!-- Main arch -->
+    <path d="M20 88 Q150 15 280 88" stroke="#c4b79a" stroke-width="5" stroke-linecap="round"/>
+    <!-- Deck surface -->
+    <path d="M15 88 L285 88" stroke="#b8a88a" stroke-width="3"/>
+    <!-- Railing -->
+    <path d="M40 78 Q150 18 260 78" stroke="#d4c8a8" stroke-width="1.8" fill="none"/>
+    <!-- Railing posts -->
+    <line x1="75" y1="64" x2="75" y2="88" stroke="#c4b79a" stroke-width="1.8"/>
+    <line x1="120" y1="44" x2="120" y2="88" stroke="#c4b79a" stroke-width="1.8"/>
+    <line x1="150" y1="36" x2="150" y2="88" stroke="#c4b79a" stroke-width="1.8"/>
+    <line x1="180" y1="44" x2="180" y2="88" stroke="#c4b79a" stroke-width="1.8"/>
+    <line x1="225" y1="64" x2="225" y2="88" stroke="#c4b79a" stroke-width="1.8"/>
+    <!-- Stone texture hints -->
+    <path d="M50 88 Q55 82 60 88" stroke="#b8a88a" stroke-width=".8" fill="none" opacity=".4"/>
+    <path d="M140 88 Q145 80 150 88" stroke="#b8a88a" stroke-width=".8" fill="none" opacity=".4"/>
+    <path d="M230 88 Q235 82 240 88" stroke="#b8a88a" stroke-width=".8" fill="none" opacity=".4"/>
+  </svg>
+
+  <!-- Ground: grass tufts & wildflowers -->
+  <svg class="scene-ground" viewBox="0 0 1000 50" preserveAspectRatio="none" fill="none">
+    <rect y="28" width="1000" height="22" fill="#a8d8a0" opacity=".2"/>
+    <!-- Grass tufts -->
+    <path d="M40 50 L46 22 L52 50" fill="#6ab04c" opacity=".45"/>
+    <path d="M47 50 L55 18 L62 50" fill="#5cb85c" opacity=".35"/>
+    <path d="M180 50 L186 25 L192 50" fill="#6ab04c" opacity=".4"/>
+    <path d="M330 50 L334 20 L340 50" fill="#5cb85c" opacity=".45"/>
+    <path d="M335 50 L342 24 L348 50" fill="#4a9e3f" opacity=".35"/>
+    <path d="M600 50 L606 26 L612 50" fill="#6ab04c" opacity=".4"/>
+    <path d="M700 50 L705 22 L710 50" fill="#5cb85c" opacity=".45"/>
+    <path d="M705 50 L712 18 L718 50" fill="#4a9e3f" opacity=".35"/>
+    <path d="M860 50 L866 24 L872 50" fill="#6ab04c" opacity=".4"/>
+    <path d="M865 50 L873 20 L878 50" fill="#5cb85c" opacity=".3"/>
+    <!-- Small wildflowers -->
+    <circle cx="130" cy="42" r="3.5" fill="#ffb7c5" opacity=".55"/>
+    <circle cx="132" cy="40" r="2" fill="#fff0f4" opacity=".5"/>
+    <circle cx="460" cy="44" r="3" fill="#ffd93d" opacity=".5"/>
+    <circle cx="462" cy="42" r="1.8" fill="#fff8e1" opacity=".45"/>
+    <circle cx="780" cy="40" r="3.5" fill="#ffb7c5" opacity=".5"/>
+    <circle cx="782" cy="38" r="2" fill="#fff0f4" opacity=".45"/>
+    <circle cx="950" cy="43" r="2.5" fill="#a0d8ef" opacity=".4"/>
+    <circle cx="280" cy="45" r="2.5" fill="#ffd93d" opacity=".4"/>
+  </svg>
+
+  <!-- Water (西湖湖面) -->
+  <svg class="scene-water" viewBox="0 0 1000 100" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#b8dce8" stop-opacity=".25"/>
+        <stop offset="60%" stop-color="#9ccfde" stop-opacity=".35"/>
+        <stop offset="100%" stop-color="#88c4d4" stop-opacity=".45"/>
+      </linearGradient>
+    </defs>
+    <rect width="1000" height="100" fill="url(#wg)"/>
+    <!-- Wave lines -->
+    <path class="water-wave" style="--wd:5.5s" d="M0 18 Q60 8 125 18 Q190 28 250 18 Q315 8 375 18 Q440 28 500 18 Q560 8 625 18 Q690 28 750 18 Q815 8 875 18 Q940 28 1000 18" stroke="rgba(255,255,255,.3)" stroke-width="1.5" fill="none"/>
+    <path class="water-wave" style="--wd:7s;--wdd:1s" d="M0 40 Q80 30 160 40 Q240 50 320 40 Q400 30 480 40 Q560 50 640 40 Q720 30 800 40 Q880 50 960 40 L1000 40" stroke="rgba(255,255,255,.22)" stroke-width="1.2" fill="none"/>
+    <path class="water-wave" style="--wd:6s;--wdd:2.5s" d="M0 62 Q70 54 140 62 Q210 70 280 62 Q350 54 420 62 Q490 70 560 62 Q630 54 700 62 Q770 70 840 62 Q910 54 1000 62" stroke="rgba(255,255,255,.18)" stroke-width="1" fill="none"/>
+    <!-- Sparkle reflections -->
+    <circle cx="180" cy="25" r="2" fill="rgba(255,255,255,.5)"><animate attributeName="opacity" values=".5;.1;.5" dur="3s" repeatCount="indefinite"/></circle>
+    <circle cx="520" cy="45" r="1.8" fill="rgba(255,255,255,.4)"><animate attributeName="opacity" values=".4;.05;.4" dur="4s" repeatCount="indefinite"/></circle>
+    <circle cx="380" cy="20" r="2.2" fill="rgba(255,255,255,.4)"><animate attributeName="opacity" values=".3;.08;.3" dur="3.5s" begin="1s" repeatCount="indefinite"/></circle>
+    <circle cx="750" cy="35" r="1.5" fill="rgba(255,255,255,.35)"><animate attributeName="opacity" values=".35;.05;.35" dur="4.5s" begin="2s" repeatCount="indefinite"/></circle>
+  </svg>
+
+  <!-- Lotus pads (荷叶) -->
+  <svg class="scene-lotus lotus-1" viewBox="0 0 40 28" fill="none">
+    <ellipse cx="20" cy="14" rx="18" ry="12" fill="#4a9e3f" opacity=".45"/>
+    <path d="M20 3 L20 25" stroke="#3d8b35" stroke-width=".5" opacity=".25"/>
+    <path d="M20 3 L17 14 L23 14Z" fill="#bce8cf" opacity=".2"/>
+  </svg>
+  <svg class="scene-lotus lotus-2" viewBox="0 0 40 28" fill="none">
+    <ellipse cx="20" cy="14" rx="18" ry="12" fill="#4a9e3f" opacity=".35"/>
+    <path d="M20 3 L20 25" stroke="#3d8b35" stroke-width=".5" opacity=".2"/>
+  </svg>
+  <svg class="scene-lotus lotus-3" viewBox="0 0 40 28" fill="none">
+    <ellipse cx="20" cy="14" rx="16" ry="10" fill="#4a9e3f" opacity=".3"/>
+    <!-- Tiny lotus flower bud -->
+    <ellipse cx="20" cy="8" rx="3" ry="5" fill="#ffb7c5" opacity=".5"/>
+    <ellipse cx="17" cy="10" rx="2.5" ry="4" fill="#ffb7c5" opacity=".4" transform="rotate(-20 17 10)"/>
+    <ellipse cx="23" cy="10" rx="2.5" ry="4" fill="#ffb7c5" opacity=".4" transform="rotate(20 23 10)"/>
+  </svg>
+</div>
+
+<!-- ==================== LAYER 1: OPENING ==================== -->
+<div id="opening">
+  <button class="skip-btn" id="skipBtn" onclick="skipToHub()">跳过 &gt;&gt;</button>
+
+  <!-- Screen 1: Hero -->
+  <div class="screen active" id="screen1">
+    <div class="s1-icon">🎙️</div>
+    <div class="s1-year">@2025</div>
+    <h1 class="s1-title">年度回顾</h1>
+    <div class="s1-club">纵横辩论社</div>
+    <div class="s1-sub">/ Annual Retrospect /</div>
+    <div class="s1-bar"></div>
+  </div>
+
+  <!-- Screen 2: Glory -->
+  <div class="screen" id="screen2">
+    <div class="s2-headline" id="s2Head">五冠三亚</div>
+    <div class="s2-sub" id="s2Sub">征战六城  载誉而归</div>
+    <div class="s2-chips" id="s2Chips">
+      <span class="s2-chip chip-gold">🏆 求实杯</span>
+      <span class="s2-chip chip-gold from-right">🏆 薪火杯</span>
+      <span class="s2-chip chip-silver">🥈 世界杯</span>
+      <span class="s2-chip chip-gold from-right">🏆 星耀大湾</span>
+      <span class="s2-chip chip-silver">🥈 未来知声</span>
+      <span class="s2-chip chip-silver from-right">🥈 燕蓟争鸣</span>
+      <span class="s2-chip chip-gold">🏆 凤鸣湾区</span>
+      <span class="s2-chip chip-gold from-right">🏆 南萤杯</span>
+    </div>
+  </div>
+
+  <!-- Screen 3: Stats -->
+  <div class="screen" id="screen3">
+    <div class="s3-grid" id="s3Grid">
+      <div class="s3-card">
+        <div class="s3-num" data-target="50">0</div>
+        <div class="s3-label">名辩手</div>
+        <div class="s3-icon">🎤</div>
+      </div>
+      <div class="s3-card">
+        <div class="s3-num" data-target="36">0</div>
+        <div class="s3-label">场外赛</div>
+        <div class="s3-icon">⚡</div>
+      </div>
+      <div class="s3-card">
+        <div class="s3-num" data-target="5">0</div>
+        <div class="s3-label">座城市</div>
+        <div class="s3-icon">🌏</div>
+      </div>
+      <div class="s3-card">
+        <div class="s3-num" data-target="8">0</div>
+        <div class="s3-label">项冠亚奖项</div>
+        <div class="s3-icon">🏆</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 3b: Leaderboard (积分榜) -->
+  <div class="screen" id="screen3b">
+    <div class="s3b-wrap">
+      <div class="s3b-title" id="s3bTitle">📊 年度积分榜</div>
+      <div class="s3b-list" id="s3bList">
+        <div class="s3b-row top1">
+          <span class="s3b-rank">1</span>
+          <span class="s3b-name">缪哲灏</span>
+          <span class="s3b-detail">22胜14负 · 36场</span>
+          <span class="s3b-score">97</span>
+        </div>
+        <div class="s3b-row">
+          <span class="s3b-rank">2</span>
+          <span class="s3b-name">宋铮</span>
+          <span class="s3b-detail">13胜9负 · 最佳×9</span>
+          <span class="s3b-score">93</span>
+        </div>
+        <div class="s3b-row">
+          <span class="s3b-rank">3</span>
+          <span class="s3b-name">程一</span>
+          <span class="s3b-detail">13胜6负 · 最佳×10</span>
+          <span class="s3b-score">81</span>
+        </div>
+        <div class="s3b-row">
+          <span class="s3b-rank">4</span>
+          <span class="s3b-name">戴行健</span>
+          <span class="s3b-detail">15胜6负 · 最佳×6</span>
+          <span class="s3b-score">65</span>
+        </div>
+        <div class="s3b-row">
+          <span class="s3b-rank">5</span>
+          <span class="s3b-name">吴巧盈</span>
+          <span class="s3b-detail">17胜6负 · 胜率73.9%</span>
+          <span class="s3b-score">57</span>
+        </div>
+      </div>
+      <div class="s3b-awards" id="s3bAwards">
+        <div class="s3b-award">🏅 积分王 <span class="s3b-award-val">缪哲灏 97</span></div>
+        <div class="s3b-award">⭐ 最佳辩手王 <span class="s3b-award-val">程一 ×10</span></div>
+        <div class="s3b-award">💪 铁人奖 <span class="s3b-award-val">缪哲灏 36场</span></div>
+        <div class="s3b-award">🎯 最高胜率 <span class="s3b-award-val">杨世宇 77.8%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 4: Highlights -->
+  <div class="screen" id="screen4">
+    <div class="s4-title" id="s4Title">✨ 高光时刻</div>
+    <div class="s4-carousel" id="s4Carousel">
+      <div class="s4-highlight" data-idx="0">
+        <div class="s4-star">⭐</div>
+        <div class="s4-name">世界杯亚军</div>
+        <div class="s4-desc">小组赛首轮落败<br>绝地翻盘杀入决赛</div>
+      </div>
+      <div class="s4-highlight" data-idx="1" style="opacity:0">
+        <div class="s4-star">🔥</div>
+        <div class="s4-name">凤鸣湾区夺冠</div>
+        <div class="s4-desc">8:7 一票险胜<br>程一三场最佳辩手</div>
+      </div>
+      <div class="s4-highlight" data-idx="2" style="opacity:0">
+        <div class="s4-star">✈️</div>
+        <div class="s4-name">背靠背夺冠</div>
+        <div class="s4-desc">凤鸣湾区(深圳) → 南萤杯(吉隆坡)<br>海内外双线夺冠</div>
+      </div>
+    </div>
+    <div class="s4-dots" id="s4Dots">
+      <div class="s4-dot active" data-idx="0"></div>
+      <div class="s4-dot" data-idx="1"></div>
+      <div class="s4-dot" data-idx="2"></div>
+    </div>
+  </div>
+
+  <!-- Screen 5: Enter -->
+  <div class="screen" id="screen5">
+    <div class="s5-leaf" id="s5Leaf">🌿</div>
+    <div class="s5-msg" id="s5Msg">你的纵横年度回顾已就绪</div>
+    <button class="enter-btn" id="enterBtn" onclick="enterHub()">探索完整回顾 →</button>
+  </div>
+</div>
+
+<!-- ==================== NAME INPUT ==================== -->
+<div class="name-overlay" id="nameOverlay">
+  <div class="name-label">输入你的名字<br>查看你的辩论年</div>
+  <input class="name-input" id="nameInput" type="text" placeholder="你的姓名" autocomplete="off">
+  <div class="name-err" id="nameErr"></div>
+  <div class="name-btns">
+    <button class="name-go" onclick="submitName()">查看回顾</button>
+    <button class="name-skip" onclick="skipPersonal()">跳过 →</button>
+  </div>
+</div>
+
+<!-- ==================== PERSONAL REVIEW ==================== -->
+<div id="personalReview"></div>
+
+<!-- ==================== LAYER 2: HUB ==================== -->
+<div id="hub">
+  <div class="hub-header">
+    <div class="hub-icon">🌿</div>
+    <h2 class="hub-title">年度回顾</h2>
+    <div class="hub-sub">纵横辩论社 · 2025.6 — 2026.3</div>
+  </div>
+
+  <div class="hub-grid" id="hubGrid">
+    <div class="hub-card" data-modal="competitions" onclick="openModal('competitions')">
+      <div class="hc-icon">🏆</div>
+      <div class="hc-title">赛事回顾</div>
+      <div class="hc-desc">五冠三亚，征战六城</div>
+      <div class="hc-num">8</div>
+    </div>
+    <div class="hub-card" data-modal="zhcup" onclick="openModal('zhcup')">
+      <div class="hc-icon">🎤</div>
+      <div class="hc-title">纵横杯</div>
+      <div class="hc-desc">新生辩论赛 · 人大站</div>
+      <div class="hc-num">🌱</div>
+    </div>
+    <div class="hub-card" data-modal="ranking" onclick="openModal('ranking')">
+      <div class="hc-icon">📊</div>
+      <div class="hc-title">积分榜 & MVP</div>
+      <div class="hc-desc">50名辩手 年度排行</div>
+      <div class="hc-num">TOP10</div>
+    </div>
+    <div class="hub-card" data-modal="activities" onclick="openModal('activities')">
+      <div class="hc-icon">🌱</div>
+      <div class="hc-title">社团活动</div>
+      <div class="hc-desc">培训 · 集训 · 表演赛</div>
+      <div class="hc-num">4</div>
+    </div>
+    <div class="hub-card" data-modal="voices" onclick="openModal('voices')">
+      <div class="hc-icon">💌</div>
+      <div class="hc-title">年度致谢</div>
+      <div class="hc-desc">写给每一位纵横人</div>
+      <div class="hc-num">🌿</div>
+    </div>
+    <div class="hub-card" data-modal="leaders" onclick="openModal('leaders')">
+      <div class="hc-icon">👥</div>
+      <div class="hc-title">社长团</div>
+      <div class="hc-desc">薪火相传 · 默默坚守</div>
+      <div class="hc-num">🌱</div>
+    </div>
+  </div>
+
+  <div class="hub-footer">
+    <div class="hub-footer-brand">RUC DEBATE</div>
+    <div class="hub-footer-msg">让我们一同期待2026！</div>
+    <div class="hub-footer-credit">纵横辩论社 · 中国人民大学</div>
+  </div>
+</div>
+
+<!-- ==================== LAYER 3: MODALS ==================== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal-sheet" id="modalSheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-icon" id="mIcon"></div>
+      <div class="modal-title" id="mTitle"></div>
+      <div class="modal-subtitle" id="mSubtitle"></div>
+    </div>
+    <div id="mBody"></div>
+  </div>
+</div>
+
+<script>
+/* ===== PETALS ===== */
+(function(){
+  const c=document.getElementById('petals');
+  for(let i=0;i<18;i++){
+    const p=document.createElement('div');
+    p.className='petal';
+    const s=6+Math.random()*6;
+    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${8+Math.random()*8}s;animation-delay:${Math.random()*10}s;opacity:0;`;
+    c.appendChild(p);
+  }
+})();
+
+/* ===== CONFETTI ===== */
+const confettiCanvas=document.getElementById('confetti');
+const ctx=confettiCanvas.getContext('2d');
+let confettiPieces=[];
+function resizeConfetti(){confettiCanvas.width=window.innerWidth;confettiCanvas.height=window.innerHeight}
+resizeConfetti();window.addEventListener('resize',resizeConfetti);
+
+function launchConfetti(){
+  const colors=['#ffd93d','#ffb347','#ff6b6b','#38a169','#4ec07e','#a0d8ef','#ffb7c5'];
+  for(let i=0;i<80;i++){
+    confettiPieces.push({
+      x:confettiCanvas.width/2+((Math.random()-.5)*100),
+      y:confettiCanvas.height/2,
+      w:4+Math.random()*6,h:3+Math.random()*4,
+      vx:(Math.random()-.5)*12,vy:-6-Math.random()*10,
+      rot:Math.random()*360,rv:(Math.random()-.5)*8,
+      color:colors[Math.floor(Math.random()*colors.length)],
+      gravity:.15,life:1
+    });
+  }
+  requestAnimationFrame(drawConfetti);
+}
+function drawConfetti(){
+  ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+  let alive=false;
+  confettiPieces.forEach(p=>{
+    if(p.life<=0)return;
+    alive=true;
+    p.x+=p.vx;p.y+=p.vy;p.vy+=p.gravity;p.rot+=p.rv;p.life-=.008;
+    ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);
+    ctx.globalAlpha=Math.max(0,p.life);
+    ctx.fillStyle=p.color;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+    ctx.restore();
+  });
+  if(alive)requestAnimationFrame(drawConfetti);
+  else confettiPieces=[];
+}
+
+/* ===== OPENING ANIMATION STATE MACHINE ===== */
+const screens=[
+  document.getElementById('screen1'),
+  document.getElementById('screen2'),
+  document.getElementById('screen3'),
+  document.getElementById('screen3b'),
+  document.getElementById('screen4'),
+  document.getElementById('screen5')
+];
+let currentScreen=0;
+const DWELL=[3800,5000,4500,5500,5500,0]; // ms to stay on each screen
+
+function updateProgress(idx){
+  const pct=((idx+1)/screens.length)*100;
+  document.getElementById('prog').style.width=pct+'%';
+}
+
+function showScreen(idx){
+  screens.forEach((s,i)=>{s.classList.toggle('active',i===idx)});
+  currentScreen=idx;
+  updateProgress(idx);
+}
+
+/* ===== SPARKLE HELPER ===== */
+function spawnSparkles(x,y,count){
+  const cols=['#b3e5c7','#ffb7c5','#ffd93d','#fff','#a0d8ef','#7dd3a3'];
+  for(let i=0;i<count;i++){
+    const s=document.createElement('div');
+    s.className='sparkle';
+    const angle=(Math.PI*2*i)/count+(Math.random()-.5)*.5;
+    const dist=50+Math.random()*100;
+    const size=3+Math.random()*4;
+    s.style.cssText=`left:${x}px;top:${y}px;width:${size}px;height:${size}px;background:${cols[i%cols.length]};--sx:${Math.cos(angle)*dist}px;--sy:${Math.sin(angle)*dist}px;animation-delay:${Math.random()*.15}s;`;
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),1300);
+  }
+}
+
+/* ===== TRANSITION 1: SPOTLIGHT REVEAL ===== */
+/* Dark vignette with expanding circular hole — like a stage spotlight opening */
+function transSpotlight(from,to,cb){
+  const fromEl=screens[from];
+  const toEl=screens[to];
+
+  // 1) Stagger-exit each child element of Screen 1 upward
+  const kids=Array.from(fromEl.children);
+  kids.forEach((el,i)=>{
+    el.style.transition=`opacity .35s ease ${i*.07}s,transform .4s ease ${i*.07}s`;
+    el.style.opacity='0';
+    el.style.transform='translateY(-20px) scale(.96)';
+  });
+
+  // 2) After elements exit, create dark vignette with hole
+  setTimeout(()=>{
+    fromEl.classList.remove('active');
+    kids.forEach(el=>{el.style.transition='';el.style.opacity='';el.style.transform='';});
+
+    // Show Screen 2 behind the vignette
+    toEl.classList.add('active');
+    currentScreen=to;
+    updateProgress(to);
+
+    // Create vignette
+    const vig=document.createElement('div');
+    vig.className='spot-vignette';
+    const hole=document.createElement('div');
+    hole.className='spot-hole';
+    vig.appendChild(hole);
+    document.body.appendChild(vig);
+
+    // Sparkle burst at center
+    spawnSparkles(window.innerWidth/2,window.innerHeight/2,14);
+
+    // Scatter glowing particles along the expanding edge
+    for(let i=0;i<20;i++){
+      const p=document.createElement('div');
+      p.className='spot-particle';
+      const angle=Math.random()*Math.PI*2;
+      const r=30+Math.random()*60;
+      const cx=window.innerWidth/2+Math.cos(angle)*r;
+      const cy=window.innerHeight/2+Math.sin(angle)*r;
+      const sz=2+Math.random()*3;
+      p.style.cssText=`left:${cx}px;top:${cy}px;width:${sz}px;height:${sz}px;animation-delay:${.1+Math.random()*.4}s;`;
+      document.body.appendChild(p);
+      setTimeout(()=>p.remove(),1200);
+    }
+
+    // Expand the hole
+    requestAnimationFrame(()=>{requestAnimationFrame(()=>{hole.classList.add('open')})});
+
+    // 3) After hole fully opens, trigger screen animations & clean up
+    setTimeout(()=>{
+      vig.style.transition='opacity .3s ease';
+      vig.style.opacity='0';
+      setTimeout(()=>vig.remove(),300);
+      if(to===1)animateScreen2();
+      cb&&cb();
+    },1100);
+  },450);
+}
+
+/* ===== TRANSITION 2: FRAGMENT SCATTER ===== */
+/* Screen shatters into a 5×4 grid of colored fragments that fly outward */
+function transFragments(from,to,cb){
+  const fromEl=screens[from];
+  const toEl=screens[to];
+
+  const colors=['#d0f0df','#c4ebd5','#bce8cf','#dcf3e4','#e0f5e9',
+                '#b3e5c7','#ceeeda','#e8f7ed','#d8f1e1','#f2fbf5'];
+
+  // 1) Build fragment grid overlay on top of current screen
+  const overlay=document.createElement('div');
+  overlay.className='frag-overlay';
+
+  for(let r=0;r<4;r++){
+    for(let c=0;c<5;c++){
+      const cell=document.createElement('div');
+      cell.className='frag-cell';
+      cell.style.background=colors[(r*5+c)%colors.length];
+
+      // Direction: outward from center of grid
+      const angle=Math.atan2(r-1.5,c-2)+(Math.random()-.5)*.6;
+      const dist=250+Math.random()*350;
+      const tx=Math.cos(angle)*dist;
+      const ty=Math.sin(angle)*dist;
+      const rz=(Math.random()-.5)*120;
+      const delay=(.05+Math.random()*.25);
+
+      cell.dataset.tx=tx;cell.dataset.ty=ty;cell.dataset.rz=rz;
+      cell.style.transitionDelay=delay+'s';
+      overlay.appendChild(cell);
+    }
+  }
+
+  // Brief flash of the screen first, then overlay appears
+  fromEl.style.transition='opacity .15s ease';
+  fromEl.style.opacity='0';
+
+  setTimeout(()=>{
+    document.body.appendChild(overlay);
+    fromEl.classList.remove('active');
+    fromEl.style.opacity='';fromEl.style.transition='';
+
+    // 2) Trigger scatter — each cell flies out in its own direction
+    requestAnimationFrame(()=>{requestAnimationFrame(()=>{
+      overlay.querySelectorAll('.frag-cell').forEach(cell=>{
+        const tx=cell.dataset.tx,ty=cell.dataset.ty,rz=cell.dataset.rz;
+        cell.style.transform=`translate(${tx}px,${ty}px) rotate(${rz}deg) scale(0)`;
+        cell.classList.add('scatter');
+      });
+    })});
+
+    // 3) Screen 3 rises from below with bounce
+    toEl.style.transform='translateY(60px) scale(.92)';
+    toEl.style.opacity='0';
+    toEl.classList.add('active');
+    currentScreen=to;
+    updateProgress(to);
+
+    setTimeout(()=>{
+      toEl.style.transition='transform .8s cubic-bezier(.34,1.56,.64,1),opacity .5s ease';
+      toEl.style.transform='translateY(0) scale(1)';
+      toEl.style.opacity='1';
+    },350);
+  },200);
+
+  // 4) Clean up
+  setTimeout(()=>{
+    overlay.remove();
+    toEl.style.transform='';toEl.style.opacity='';toEl.style.transition='';
+    if(to===2)animateScreen3();
+    cb&&cb();
+  },1600);
+}
+
+/* ===== TRANSITION 3: 3D BOOK PAGE FLIP ===== */
+/* Current screen folds away like a book page, new screen unfolds in */
+function transFlip(from,to,cb){
+  const fromEl=screens[from];
+  const toEl=screens[to];
+
+  // Shadow layer for depth during flip
+  const shadow=document.createElement('div');
+  shadow.className='flip-shadow';
+  document.body.appendChild(shadow);
+
+  // Page-edge line that travels during flip
+  const edge=document.createElement('div');
+  edge.className='flip-edge';
+  edge.style.left='50%';
+  document.body.appendChild(edge);
+
+  setTimeout(()=>{shadow.classList.add('dim');edge.classList.add('show')},80);
+
+  // 1) Current page folds away from left edge
+  fromEl.style.transformOrigin='left center';
+  fromEl.style.transition='transform 1s ease-in-out';
+  fromEl.style.transform='perspective(1200px) rotateY(-105deg)';
+
+  // Animate edge position (follows the fold)
+  let edgeStart=Date.now();
+  function animEdge(){
+    const t=Math.min(1,(Date.now()-edgeStart)/1000);
+    const eased=1-(1-t)*(1-t); // ease-out
+    edge.style.left=(50-50*eased)+'%';
+    if(t<1)requestAnimationFrame(animEdge);
+  }
+  requestAnimationFrame(animEdge);
+
+  // 2) New page unfolds from the right after a stagger
+  toEl.style.transformOrigin='right center';
+  toEl.style.transform='perspective(1200px) rotateY(105deg)';
+  toEl.classList.add('active');
+
+  setTimeout(()=>{
+    toEl.style.transition='transform 1s ease-in-out';
+    toEl.style.transform='perspective(1200px) rotateY(0deg)';
+    shadow.classList.remove('dim');
+
+    // Edge travels back
+    edgeStart=Date.now();
+    function animEdge2(){
+      const t=Math.min(1,(Date.now()-edgeStart)/900);
+      const eased=1-(1-t)*(1-t);
+      edge.style.left=(eased*50+50)+'%';
+      if(t<1)requestAnimationFrame(animEdge2);
+    }
+    requestAnimationFrame(animEdge2);
+  },550);
+
+  // 3) Clean up
+  setTimeout(()=>{
+    fromEl.classList.remove('active');
+    fromEl.style.transform='';fromEl.style.transformOrigin='';fromEl.style.transition='';
+    toEl.style.transform='';toEl.style.transformOrigin='';toEl.style.transition='';
+    shadow.remove();edge.remove();
+    currentScreen=to;
+    updateProgress(to);
+    if(to===4)animateScreen4();
+    cb&&cb();
+  },1700);
+}
+
+/* ===== TRANSITION 2b: SLIDE UP (stats → leaderboard) ===== */
+function transSlideUp(from,to,cb){
+  const fromEl=screens[from];
+  const toEl=screens[to];
+
+  fromEl.style.transition='transform .7s var(--smooth),opacity .5s ease';
+  fromEl.style.transform='translateY(-60px) scale(.95)';
+  fromEl.style.opacity='0';
+
+  toEl.style.transform='translateY(60px) scale(.95)';
+  toEl.style.opacity='0';
+  toEl.classList.add('active');
+  currentScreen=to;
+  updateProgress(to);
+
+  setTimeout(()=>{
+    toEl.style.transition='transform .7s cubic-bezier(.34,1.56,.64,1),opacity .5s ease';
+    toEl.style.transform='translateY(0) scale(1)';
+    toEl.style.opacity='1';
+  },250);
+
+  setTimeout(()=>{
+    fromEl.classList.remove('active');
+    fromEl.style.transform='';fromEl.style.opacity='';fromEl.style.transition='';
+    toEl.style.transform='';toEl.style.opacity='';toEl.style.transition='';
+    if(to===3)animateScreen3b();
+    cb&&cb();
+  },1100);
+}
+
+/* ===== TRANSITION 4: VORTEX COLLAPSE + RIPPLE BLOOM ===== */
+/* Screen spirals into center, flash burst, ripple rings, new screen blooms out */
+function transVortex(from,to,cb){
+  const fromEl=screens[from];
+  const toEl=screens[to];
+  const cx=window.innerWidth/2,cy=window.innerHeight/2;
+
+  // 1) Vortex: shrink + multi-rotation + slight skew for drama
+  fromEl.style.transition='transform 1.1s cubic-bezier(.55,.06,.68,.19),opacity 1s ease';
+  fromEl.style.transform='scale(0) rotate(540deg)';
+  fromEl.style.opacity='0';
+
+  // 2) At collapse point: center flash + ripple rings + sparkles
+  setTimeout(()=>{
+    // Flash
+    const flash=document.createElement('div');
+    flash.className='center-flash';
+    document.body.appendChild(flash);
+    setTimeout(()=>flash.remove(),800);
+
+    // 3 staggered ripple rings
+    for(let i=0;i<3;i++){
+      const ring=document.createElement('div');
+      ring.className='ripple-ring';
+      ring.style.animationDelay=(i*.2)+'s';
+      if(i===1)ring.style.borderColor='var(--pink)';
+      if(i===2)ring.style.borderColor='var(--yellow)';
+      document.body.appendChild(ring);
+      setTimeout(()=>ring.remove(),1800);
+    }
+
+    // Sparkle explosion
+    spawnSparkles(cx,cy,20);
+  },900);
+
+  // 3) Bloom in the new screen
+  setTimeout(()=>{
+    fromEl.classList.remove('active');
+    fromEl.style.transform='';fromEl.style.opacity='';fromEl.style.transition='';
+
+    toEl.style.transform='scale(0) rotate(-60deg)';
+    toEl.style.opacity='0';
+    toEl.classList.add('active');
+    currentScreen=to;
+    updateProgress(to);
+
+    requestAnimationFrame(()=>{
+      toEl.style.transition='transform 1s cubic-bezier(.34,1.56,.64,1),opacity .6s ease';
+      toEl.style.transform='scale(1) rotate(0deg)';
+      toEl.style.opacity='1';
+    });
+
+    if(to===5)setTimeout(()=>animateScreen5(),200);
+  },1200);
+
+  // 4) Clean up
+  setTimeout(()=>{
+    toEl.style.transform='';toEl.style.opacity='';toEl.style.transition='';
+    cb&&cb();
+  },2400);
+}
+
+const transitions=[transSpotlight,transFragments,transSlideUp,transFlip,transVortex];
+
+function advanceScreen(){
+  if(currentScreen>=screens.length-1)return;
+  const from=currentScreen;
+  const to=from+1;
+  transitions[from](from,to);
+}
+
+/* Screen-specific animations */
+function animateScreen2(){
+  const h=document.getElementById('s2Head');
+  const sub=document.getElementById('s2Sub');
+  h.classList.add('pop');
+  setTimeout(()=>sub.classList.add('pop'),300);
+  const chips=document.querySelectorAll('.s2-chip');
+  chips.forEach((c,i)=>{
+    setTimeout(()=>c.classList.add('show'),600+i*200);
+  });
+  // confetti after all chips
+  setTimeout(()=>launchConfetti(),600+chips.length*200+200);
+}
+
+function animateScreen3(){
+  const cards=document.querySelectorAll('.s3-card');
+  cards.forEach((c,i)=>{
+    setTimeout(()=>{
+      c.classList.add('show');
+      // counter animation
+      const numEl=c.querySelector('.s3-num');
+      const target=parseInt(numEl.dataset.target);
+      const isPlus=target>=30;
+      let cur=0;
+      const step=Math.max(1,Math.floor(target/30));
+      const iv=setInterval(()=>{
+        cur=Math.min(cur+step,target);
+        numEl.textContent=cur+(isPlus&&cur===target?'+':'');
+        if(cur>=target)clearInterval(iv);
+      },40);
+    },i*150);
+  });
+}
+
+function animateScreen3b(){
+  document.getElementById('s3bTitle').classList.add('show');
+  const rows=document.querySelectorAll('.s3b-row');
+  rows.forEach((r,i)=>{
+    setTimeout(()=>r.classList.add('show'),200+i*180);
+  });
+  const awards=document.querySelectorAll('.s3b-award');
+  const rowDelay=200+rows.length*180+200;
+  awards.forEach((a,i)=>{
+    setTimeout(()=>a.classList.add('show'),rowDelay+i*120);
+  });
+}
+
+let hlIdx=0,hlTimer=null;
+function animateScreen4(){
+  document.getElementById('s4Title').classList.add('show');
+  startHighlightCarousel();
+}
+function startHighlightCarousel(){
+  hlTimer=setInterval(()=>{
+    hlIdx=(hlIdx+1)%3;
+    showHighlight(hlIdx);
+  },2500);
+}
+function showHighlight(idx){
+  const items=document.querySelectorAll('.s4-highlight');
+  const dots=document.querySelectorAll('.s4-dot');
+  items.forEach((el,i)=>{
+    if(i===idx){el.style.opacity='1';el.style.transform='rotateY(0)'}
+    else{el.style.opacity='0';el.style.transform='rotateY(180deg)'}
+  });
+  dots.forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+// dot click
+document.querySelectorAll('.s4-dot').forEach(d=>{
+  d.addEventListener('click',()=>{
+    hlIdx=parseInt(d.dataset.idx);
+    showHighlight(hlIdx);
+    clearInterval(hlTimer);
+    startHighlightCarousel();
+  });
+});
+
+function animateScreen5(){
+  const leaf=document.getElementById('s5Leaf');
+  const msg=document.getElementById('s5Msg');
+  const btn=document.getElementById('enterBtn');
+  leaf.classList.add('show');
+  setTimeout(()=>msg.classList.add('show'),200);
+  setTimeout(()=>btn.classList.add('show'),600);
+  // auto enter after 4s
+  setTimeout(()=>{if(currentScreen===5)enterHub()},4000);
+}
+
+/* Start the show */
+let autoTimer=null;
+function startAutoPlay(){
+  let idx=0;
+  function next(){
+    if(idx>=DWELL.length-1)return;
+    autoTimer=setTimeout(()=>{
+      advanceScreen();
+      idx++;
+      next();
+    },DWELL[idx]);
+  }
+  next();
+}
+setTimeout(startAutoPlay,500);
+
+function skipToHub(){
+  clearTimeout(autoTimer);
+  clearInterval(hlTimer);
+  enterHub();
+}
+
+function enterHub(){
+  clearTimeout(autoTimer);
+  clearInterval(hlTimer);
+  const opening=document.getElementById('opening');
+  opening.style.transition='opacity .5s ease';
+  opening.style.opacity='0';
+  setTimeout(()=>{
+    opening.style.display='none';
+    document.getElementById('skipBtn').style.display='none';
+    showNameInput();
+  },500);
+}
+
+function realEnterHub(){
+  document.body.classList.add('hub-active');
+  const hub=document.getElementById('hub');
+  hub.classList.add('active');
+  const cards=document.querySelectorAll('.hub-card');
+  cards.forEach((c,i)=>{
+    setTimeout(()=>c.classList.add('vis'),100+i*120);
+  });
+  updateProgress(6);
+  window.scrollTo(0,0);
+}
+
+/* ===== MODAL SYSTEM ===== */
+const modalData={
+  competitions:{
+    icon:'🏆',title:'赛事回顾',subtitle:'五冠三亚 · 征战六城',
+    body:`
+      <div class="m-section">
+        <div class="m-section-title">🏅 赛季战绩</div>
+        ${[
+          {name:'求实杯',badge:'🏆 冠军',date:'2025.04',loc:'北京',team:'程一、翦音志、董欣怡、许子健、毕晨希、陈映竹、戴行健、唐金瑜、王天远、吕诚、杨世宇、曹科航、孙可嘉、宋铮',detail:'第四届"求实杯"首都高校辩论赛'},
+          {name:'薪火杯',badge:'🏆 冠军',date:'2025.05',loc:'北京',team:'程一(全程最佳辩手)、何天昊、宋铮、许子健、王天远、王丁宇、李雨佳、缪哲灏、吴巧盈、左焕达',detail:'第六届"薪火杯"华语辩论高校邀请赛'},
+          {name:'世界杯',badge:'🥈 亚军',date:'2025.07',loc:'北京',team:'程一、董欣怡、翦音志、楚润东、何天昊、刘天浩、孙可嘉、宋铮',detail:'2025华语辩论世界杯·总决赛'},
+          {name:'星耀大湾',badge:'🏆 冠军',date:'2025.08',loc:'澳门',team:'刘俊威、唐金瑜、杨世宇、左焕达、吴巧盈',detail:'2025星耀大湾国际华语演辩文化节(公开组)'},
+          {name:'未来知声',badge:'🥈 亚军',date:'2025.08',loc:'保定',team:'程一、何天昊、宋铮、戴行健、宫淋浩、缪哲灏',detail:'2025未来知声世界青年思辨大赛(高校组)'},
+          {name:'燕蓟争鸣',badge:'🥈 亚军',date:'2025.11',loc:'北京',team:'戴行健(全程最佳辩手)、陈映竹、杨世宇、许子健、吴巧盈、张柏林、郑浩鸣、缪哲灏、颜铭希、左焕达',detail:'2025燕蓟争鸣(华语辩论世界杯北京赛区)'},
+          {name:'凤鸣湾区',badge:'🏆 冠军',date:'2025.11',loc:'深圳',team:'缪哲灏、左焕达、程一、孙可嘉、吴巧盈、戴行健、郑浩鸣、秦梓翔',detail:'2025凤鸣湾区·世界高校辩论菁英会 · 决赛8:7险胜'},
+          {name:'南萤杯',badge:'🏆 冠军',date:'2025.12',loc:'吉隆坡',team:'程一、缪哲灏、吴巧盈、宋铮、郑浩鸣、王天远',detail:'2025"南萤杯"国际华语辩论赛 · 海内外背靠背夺冠'}
+        ].map(c=>`
+          <div class="m-accordion" onclick="this.classList.toggle('open')">
+            <div class="m-acc-header">
+              <span>${c.badge} ${c.name}</span>
+              <span style="font-size:.75rem;color:var(--tl)">${c.date} · ${c.loc} <span class="m-acc-arrow">▼</span></span>
+            </div>
+            <div class="m-acc-body"><div class="m-acc-content">
+              <strong>阵容：</strong>${c.team}<br>
+              <strong>战况：</strong>${c.detail}
+            </div></div>
+          </div>
+        `).join('')}
+      </div>`
+  },
+  zhcup:{
+    icon:'🎤',title:'纵横杯',subtitle:'bilibili新国辩 · 人大站',
+    body:`
+      <div class="m-section" style="text-align:center">
+        <div style="font-size:1.05rem;color:var(--g500);font-weight:600;margin:.5rem 0">
+          🎤 "纵横杯"暨 bilibili 新国辩
+        </div>
+        <div style="font-size:.85rem;color:var(--tb);margin:.5rem 0">
+          全国大学生新生辩论赛 · 中国人民大学站
+        </div>
+        <div style="font-size:.78rem;color:var(--tl);margin-top:.6rem">
+          2025.11 — 12 / 北京
+        </div>
+      </div>
+      <div class="m-section">
+        <p style="font-size:.88rem;color:var(--tb);line-height:1.9;text-align:center;padding:.5rem .5rem">
+          人大校内新生辩手的年度盛会，<br>
+          是新鲜血液与纵横第一次正面相遇的舞台。
+        </p>
+      </div>`
+  },
+  ranking:{
+    icon:'📊',title:'积分榜 & MVP',subtitle:'50名辩手 · 年度排行',
+    body:''
+  },
+  activities:{
+    icon:'🌱',title:'社团活动',subtitle:'培训 · 集训 · 表演赛',
+    body:`
+      <div class="m-section">
+        ${[
+          {icon:'🎭',name:'校辩论赛表演赛',date:'2025年9月',desc:'与校学生会联合举办，展示辩论风采，吸引新生加入'},
+          {icon:'📚',name:'纵横培训班',date:'2025年10月—12月',desc:'面向新社员的系统性辩论培训，涵盖立论、质询、结辩等核心技能'},
+          {icon:'🎤',name:'纵横杯（院际赛）',date:'2025年11月—12月',desc:'20+院系参赛的校内最大规模辩论赛事，选拔新生力量'},
+          {icon:'🏕',name:'冬季集训',date:'2026年1月',desc:'寒假集中训练，针对春季赛季进行战术打磨和团队建设'}
+        ].map(a=>`
+          <div class="m-accordion" onclick="this.classList.toggle('open')">
+            <div class="m-acc-header"><span>${a.icon} ${a.name}</span><span style="font-size:.75rem;color:var(--tl)">${a.date} <span class="m-acc-arrow">▼</span></span></div>
+            <div class="m-acc-body"><div class="m-acc-content">${a.desc}</div></div>
+          </div>
+        `).join('')}
+      </div>`
+  },
+  voices:{
+    icon:'💌',title:'年度致谢',subtitle:'写给每一位纵横人',
+    body:`
+      <div class="m-section">
+        <p style="font-size:.92rem;color:var(--tb);line-height:2;text-align:center;padding:1rem .5rem">
+          虽然本篇年终总结只统计了冠、亚赛事<br>以及社团建设的部分重大时刻<br><br>
+          但我们都知道过去一年种种挫折、惜败的时刻<br>于我们而言，和胜利同样重要、亲切与真实
+        </p>
+      </div>
+      <div class="m-section">
+        <div class="m-section-title">🌿 今年取得的任何成绩</div>
+        <p style="font-size:.85rem;color:var(--tb);line-height:1.9;padding:.5rem 0">
+          要感谢所有实打实为纵横做事的人们<br>
+          感谢心系纵横、无私奉献的教练团与师兄师姐们<br>
+          感谢维持社团日常运转的社长团成员们<br>
+          更要感谢每一位参赛队员的辛勤付出、彼此信任
+        </p>
+      </div>
+      <div class="m-section" style="text-align:center">
+        <div style="font-size:1.1rem;color:var(--g500);font-weight:600;margin:1rem 0">
+          🦋 让我们一同期待 2026！🦋
+        </div>
+        <div style="font-size:.78rem;color:var(--tl);margin-top:.5rem">
+          —— 制作：每一位深爱纵横辩论社的纵横人
+        </div>
+      </div>`
+  },
+  leaders:{
+    icon:'👥',title:'社长团',subtitle:'薪火相传',
+    body:`
+      <div class="m-section">
+        <div class="m-section-title">👑 社长</div>
+        <div class="m-awards">
+          <div class="m-award"><div class="m-award-label">社长</div><div class="m-award-name">宋铮</div></div>
+        </div>
+      </div>
+      <div class="m-section" style="text-align:center">
+        <p style="font-size:.88rem;color:var(--tb);line-height:1.9;padding:1rem .5rem">
+          这一年，社长团承担了社团日常运转的全部琐碎与重担。<br>
+          从赛事组织、培训安排，到队员关怀、对外联络——<br>
+          每一件小事的背后，都是这支团队的默默付出。
+        </p>
+        <div style="font-size:.78rem;color:var(--tl);margin-top:.5rem">
+          🦋 RUC DEBATE 🦋
+        </div>
+      </div>`
+  }
+};
+
+function openModal(key){
+  const d=modalData[key];if(!d)return;
+  document.getElementById('mIcon').textContent=d.icon;
+  document.getElementById('mTitle').textContent=d.title;
+  document.getElementById('mSubtitle').textContent=d.subtitle;
+  document.getElementById('mBody').innerHTML=d.body;
+  const overlay=document.getElementById('modalOverlay');
+  overlay.style.display='flex';
+  requestAnimationFrame(()=>overlay.classList.add('open'));
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  const overlay=document.getElementById('modalOverlay');
+  overlay.classList.remove('open');
+  setTimeout(()=>{overlay.style.display='none';document.body.style.overflow=''},400);
+}
+function closeModalOutside(e){if(e.target===document.getElementById('modalOverlay'))closeModal()}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+/* ===== SCROLL PROGRESS (hub mode) ===== */
+window.addEventListener('scroll',()=>{
+  if(!document.body.classList.contains('hub-active'))return;
+  const h=document.documentElement;
+  const pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+  document.getElementById('prog').style.width=Math.min(100,pct)+'%';
+});
+
+/* ===== PLAYER & MATCH DATA ===== */
+const PLAYERS=[{rank:1,name:"缪哲灏",w:22,l:14,best:7,aw:1,al:1,ab:1,score:97,total:36,wr:60.5,br:21.1},{rank:2,name:"宋铮",w:13,l:9,best:9,aw:4,al:4,ab:2,score:93,total:22,wr:56.7,br:36.7},{rank:3,name:"程一",w:13,l:6,best:10,aw:3,al:3,ab:1,score:81,total:19,wr:64.0,br:44.0},{rank:4,name:"戴行健",w:15,l:6,best:6,aw:1,al:1,ab:0,score:65,total:21,wr:69.6,br:26.1},{rank:5,name:"吴巧盈",w:17,l:6,best:0,aw:0,al:0,ab:0,score:57,total:23,wr:73.9,br:0},{rank:6,name:"何天昊",w:11,l:3,best:4,aw:1,al:2,ab:0,score:51,total:14,wr:70.6,br:23.5},{rank:7,name:"杨世宇",w:14,l:3,best:3,aw:0,al:1,ab:0,score:51,total:17,wr:77.8,br:16.7},{rank:8,name:"郑浩鸣",w:13,l:3,best:4,aw:0,al:2,ab:0,score:52,total:16,wr:72.2,br:22.2},{rank:9,name:"孙可嘉",w:5,l:2,best:0,aw:4,al:2,ab:0,score:43,total:7,wr:69.2,br:0},{rank:10,name:"许子健",w:10,l:7,best:1,aw:0,al:1,ab:0,score:41,total:17,wr:55.6,br:5.6},{rank:11,name:"左焕达",w:11,l:5,best:1,aw:0,al:0,ab:0,score:39,total:16,wr:68.8,br:6.2},{rank:12,name:"王丁宇",w:7,l:8,best:0,aw:0,al:0,ab:0,score:29,total:15,wr:46.7,br:0},{rank:13,name:"翦音志",w:1,l:2,best:2,aw:3,al:0,ab:0,score:22,total:3,wr:66.7,br:33.3},{rank:14,name:"刘俊威",w:5,l:2,best:2,aw:0,al:0,ab:0,score:19,total:7,wr:71.4,br:28.6},{rank:15,name:"董欣怡",w:2,l:1,best:0,aw:1,al:3,ab:0,score:21,total:3,wr:42.9,br:0},{rank:16,name:"宫淋浩",w:3,l:8,best:0,aw:0,al:0,ab:0,score:17,total:11,wr:27.3,br:0},{rank:17,name:"陈映竹",w:4,l:4,best:0,aw:0,al:0,ab:0,score:16,total:8,wr:50.0,br:0},{rank:18,name:"楚润东",w:0,l:1,best:0,aw:2,al:1,ab:0,score:14,total:1,wr:50.0,br:0},{rank:19,name:"唐金瑜",w:4,l:2,best:0,aw:0,al:0,ab:0,score:14,total:6,wr:66.7,br:0},{rank:20,name:"史元岳",w:4,l:2,best:0,aw:0,al:0,ab:0,score:14,total:6,wr:66.7,br:0},{rank:21,name:"王天远",w:4,l:0,best:0,aw:0,al:0,ab:0,score:12,total:4,wr:100,br:0},{rank:22,name:"肖禹辰",w:2,l:0,best:2,aw:0,al:1,ab:0,score:11,total:2,wr:66.7,br:66.7},{rank:23,name:"石憬颐",w:3,l:2,best:0,aw:0,al:0,ab:0,score:11,total:5,wr:60.0,br:0},{rank:24,name:"曹雁寒",w:3,l:1,best:0,aw:0,al:0,ab:0,score:10,total:4,wr:75.0,br:0},{rank:25,name:"张宝文",w:3,l:1,best:0,aw:0,al:0,ab:0,score:10,total:4,wr:75.0,br:0},{rank:26,name:"韦怡扬",w:2,l:4,best:0,aw:0,al:0,ab:0,score:10,total:6,wr:33.3,br:0},{rank:27,name:"邢家璇",w:2,l:2,best:0,aw:0,al:0,ab:0,score:8,total:4,wr:50.0,br:0},{rank:28,name:"尹雯萱",w:2,l:2,best:0,aw:0,al:0,ab:0,score:8,total:4,wr:50.0,br:0},{rank:29,name:"袁蓝",w:2,l:2,best:0,aw:0,al:0,ab:0,score:8,total:4,wr:50.0,br:0},{rank:30,name:"颜铭希",w:2,l:1,best:0,aw:0,al:1,ab:0,score:10,total:3,wr:50.0,br:0},{rank:31,name:"潘芷蕴",w:2,l:1,best:0,aw:0,al:0,ab:0,score:7,total:3,wr:66.7,br:0},{rank:32,name:"程露萱",w:1,l:1,best:0,aw:0,al:0,ab:0,score:4,total:2,wr:50.0,br:0},{rank:33,name:"刘天浩",w:1,l:1,best:0,aw:0,al:0,ab:0,score:4,total:2,wr:50.0,br:0},{rank:34,name:"黄斐凡",w:1,l:1,best:0,aw:0,al:0,ab:0,score:4,total:2,wr:50.0,br:0},{rank:35,name:"李伟琦",w:1,l:0,best:0,aw:0,al:0,ab:0,score:3,total:1,wr:100,br:0},{rank:36,name:"陈展",w:1,l:0,best:0,aw:0,al:0,ab:0,score:3,total:1,wr:100,br:0},{rank:37,name:"刘泓锋",w:1,l:0,best:0,aw:0,al:0,ab:0,score:3,total:1,wr:100,br:0},{rank:38,name:"张柏林",w:1,l:0,best:0,aw:0,al:0,ab:0,score:3,total:1,wr:100,br:0},{rank:39,name:"秦梓翔",w:1,l:0,best:0,aw:0,al:0,ab:0,score:3,total:1,wr:100,br:0},{rank:40,name:"王怡然",w:0,l:2,best:0,aw:0,al:0,ab:0,score:2,total:2,wr:0,br:0},{rank:41,name:"毕晨希",w:0,l:2,best:0,aw:0,al:0,ab:0,score:2,total:2,wr:0,br:0},{rank:42,name:"刘诗然",w:0,l:1,best:0,aw:0,al:0,ab:0,score:1,total:1,wr:0,br:0},{rank:43,name:"毛真洁",w:1,l:1,best:0,aw:0,al:0,ab:0,score:4,total:2,wr:50.0,br:0},{rank:44,name:"熊韬",w:0,l:1,best:0,aw:0,al:0,ab:0,score:1,total:1,wr:0,br:0},{rank:45,name:"佧米然·克里木",w:0,l:1,best:0,aw:0,al:0,ab:0,score:1,total:1,wr:0,br:0},{rank:46,name:"邹一菲",w:1,l:1,best:0,aw:0,al:0,ab:0,score:4,total:2,wr:50.0,br:0},{rank:47,name:"陈博远",w:1,l:0,best:0,aw:0,al:0,ab:0,score:3,total:1,wr:100,br:0},{rank:48,name:"陈中琦",w:1,l:0,best:0,aw:0,al:0,ab:0,score:3,total:1,wr:100,br:0},{rank:49,name:"丁艳沛",w:1,l:0,best:0,aw:0,al:0,ab:0,score:3,total:1,wr:100,br:0},{rank:50,name:"张新昆",w:0,l:1,best:0,aw:0,al:0,ab:0,score:1,total:1,wr:0,br:0}];
+
+const MATCHES=[{c:"杜伦",r:"小组赛一",w:1,b:["宋铮","翦音志"],p:["王丁宇","孙可嘉","翦音志","宋铮"]},{c:"杜伦",r:"小组赛二",w:0,b:[],p:["缪哲灏","孙可嘉","程一","戴行健"]},{c:"杜伦",r:"4进2",w:0,b:["翦音志"],p:["缪哲灏","王丁宇","翦音志","董欣怡"]},{c:"和合",r:"初赛",w:1,b:["刘俊威","肖禹辰"],p:["何天昊","许子健","刘俊威","肖禹辰"]},{c:"和合",r:"复赛",w:1,b:["何天昊","缪哲灏"],p:["许子健","张宝文","何天昊","缪哲灏"]},{c:"世界杯",r:"小组赛一",w:0,b:["宋铮"],p:["何天昊","董欣怡","程一","宋铮"]},{c:"世界杯",r:"小组赛二",w:1,b:["宋铮"],p:["楚润东","翦音志","宋铮","孙可嘉"]},{c:"世界杯",r:"16进8",w:1,b:[],p:["翦音志","程一","宋铮","孙可嘉"]},{c:"世界杯",r:"8进4",w:1,b:["程一"],p:["楚润东","董欣怡","孙可嘉","程一"]},{c:"世界杯",r:"4进2",w:1,b:[],p:["翦音志","程一","宋铮","孙可嘉"]},{c:"世界杯",r:"决赛",w:0,b:[],p:["楚润东","董欣怡","孙可嘉","程一"]},{c:"温韵",r:"小组赛一",w:0,b:["戴行健"],p:["唐金瑜","左焕达","戴行健","缪哲灏"]},{c:"温韵",r:"小组赛二",w:1,b:[],p:["吴巧盈","戴行健","左焕达","缪哲灏"]},{c:"温韵",r:"复赛",w:0,b:[],p:["唐金瑜","程露萱","缪哲灏","翦音志"]},{c:"识渡",r:"初赛",w:1,b:[],p:["程露萱","许子健","刘俊威","王丁宇"]},{c:"识渡",r:"16进8",w:1,b:[],p:["许子健","李伟琦","陈展","刘泓锋"]},{c:"识渡",r:"8进4",w:0,b:["何天昊"],p:["陈映竹","刘俊威","何天昊","王丁宇"]},{c:"星耀大湾",r:"小组赛一",w:1,b:["刘俊威"],p:["吴巧盈","左焕达","刘俊威","杨世宇"]},{c:"星耀大湾",r:"小组赛二",w:1,b:[],p:["唐金瑜","吴巧盈","刘俊威","左焕达"]},{c:"星耀大湾",r:"8进4",w:1,b:["左焕达"],p:["唐金瑜","吴巧盈","左焕达","杨世宇"]},{c:"星耀大湾",r:"4进2",w:1,b:["杨世宇"],p:["唐金瑜","左焕达","刘俊威","杨世宇"]},{c:"星耀大湾",r:"决赛",w:1,b:["杨世宇"],p:["唐金瑜","吴巧盈","左焕达","杨世宇"]},{c:"创辩",r:"初赛一",w:1,b:["戴行健"],p:["曹雁寒","戴行健","许子健",""]},{c:"创辩",r:"初赛二",w:1,b:["肖禹辰"],p:["王丁宇","肖禹辰","何天昊",""]},{c:"创辩",r:"12进6",w:1,b:["许子健"],p:["杨世宇","何天昊","许子健",""]},{c:"未来知声",r:"小组赛一",w:1,b:["程一"],p:["戴行健","程一","何天昊","缪哲灏"]},{c:"未来知声",r:"小组赛二",w:1,b:["宋铮"],p:["宫淋浩","何天昊","宋铮","戴行健"]},{c:"未来知声",r:"4进2",w:1,b:["何天昊"],p:["程一","宋铮","何天昊","宫淋浩"]},{c:"未来知声",r:"决赛",w:0,b:[],p:["缪哲灏","何天昊","宋铮","程一"]},{c:"乌马河",r:"预选赛一",w:1,b:[],p:["左焕达","吴巧盈","缪哲灏","曹雁寒"]},{c:"乌马河",r:"预选赛二",w:1,b:["缪哲灏"],p:["缪哲灏","吴巧盈","左焕达","王丁宇"]},{c:"乌马河",r:"初赛",w:0,b:[],p:["王丁宇","吴巧盈","左焕达","缪哲灏"]},{c:"乌马河",r:"晋级赛",w:1,b:["缪哲灏"],p:["吴巧盈","王丁宇","缪哲灏","曹雁寒"]},{c:"乌马河",r:"附加赛",w:0,b:[],p:["吴巧盈","缪哲灏","左焕达","曹雁寒"]},{c:"星恒",r:"32进16",w:1,b:["宋铮"],p:["孙可嘉","王天远","宋铮","何天昊"]},{c:"星恒",r:"16进8",w:1,b:[],p:["杨世宇","程一","宋铮","董欣怡"]},{c:"星恒",r:"8进4",w:0,b:["宋铮"],p:["王丁宇","程一","孙可嘉","宋铮"]},{c:"南萤线上",r:"小组赛一",w:1,b:["程一"],p:["程一","宋铮","吴巧盈","缪哲灏"]},{c:"南萤线上",r:"小组赛二",w:1,b:["程一"],p:["程一","宋铮","吴巧盈","缪哲灏"]},{c:"诚信",r:"小组赛一",w:0,b:["缪哲灏"],p:["缪哲灏","刘诗然","吴巧盈","宫淋浩"]},{c:"诚信",r:"小组赛二",w:1,b:[],p:["史元岳","杨世宇","许子健","缪哲灏"]},{c:"黄联",r:"32进16",w:1,b:[],p:["陈映竹","杨世宇","许子健","戴行健"]},{c:"黄联",r:"16进8",w:1,b:["戴行健"],p:["陈映竹","吴巧盈","戴行健","许子健"]},{c:"黄联",r:"8进4",w:1,b:["戴行健"],p:["陈映竹","张柏林","戴行健","郑浩鸣"]},{c:"黄联",r:"4进2",w:1,b:["戴行健"],p:["缪哲灏","颜铭希","戴行健","郑浩鸣"]},{c:"黄联",r:"决赛",w:0,b:[],p:["左焕达","颜铭希","戴行健","郑浩鸣"]},{c:"云游",r:"第一轮",w:0,b:[],p:["王怡然","熊韬","戴行健","毛真洁"]},{c:"环保",r:"第一轮",w:0,b:[],p:["王丁宇","王怡然","吴巧盈","袁蓝"]},{c:"凤鸣湾区",r:"小组赛一",w:1,b:["缪哲灏"],p:["吴巧盈","秦梓翔","郑浩鸣","缪哲灏"]},{c:"凤鸣湾区",r:"小组赛二",w:1,b:["程一"],p:["郑浩鸣","程一","戴行健","吴巧盈"]},{c:"凤鸣湾区",r:"8进4",w:1,b:["程一"],p:["缪哲灏","郑浩鸣","程一","孙可嘉"]},{c:"凤鸣湾区",r:"4进2",w:1,b:["程一"],p:["左焕达","缪哲灏","程一","孙可嘉"]},{c:"凤鸣湾区",r:"决赛",w:1,b:[],p:["左焕达","缪哲灏","程一","孙可嘉"]},{c:"廛铎",r:"第一轮",w:0,b:[],p:["陈映竹","许子健","王丁宇","杨世宇"]},{c:"群岛",r:"第一轮",w:0,b:[],p:["陈映竹","许子健","王丁宇","宫淋浩"]},{c:"上海杯",r:"小组赛一",w:1,b:[],p:["左焕达","何天昊","刘天浩","宋铮"]},{c:"上海杯",r:"小组赛二",w:0,b:[],p:["佧米然","刘天浩","宋铮","许子健"]},{c:"名校赛",r:"小组赛一",w:1,b:["缪哲灏"],p:["戴行健","宋铮","何天昊","缪哲灏"]},{c:"名校赛",r:"小组赛二",w:0,b:[],p:["缪哲灏","许子健","何天昊","宋铮"]},{c:"天伦",r:"小组赛一",w:0,b:[],p:["郑浩鸣","何天昊","董欣怡","杨世宇"]},{c:"天伦",r:"小组赛二",w:0,b:[],p:["颜铭希","戴行健","郑浩鸣","宋铮"]},{c:"南审",r:"小组赛一",w:0,b:["程一"],p:["毕晨希","程一","缪哲灏","许子健"]},{c:"南审",r:"小组赛二",w:0,b:[],p:["缪哲灏","毕晨希","许子健","宫淋浩"]},{c:"银卡赛",r:"淘汰赛",w:0,b:[],p:["肖禹辰","孙可嘉","程一","宋铮"]},{c:"艺华",r:"小组赛一",w:1,b:["宋铮"],p:["吴巧盈","缪哲灏","宋铮","王丁宇"]},{c:"艺华",r:"小组赛二",w:1,b:[],p:["王丁宇","缪哲灏","宋铮","吴巧盈"]},{c:"艺华",r:"16进8",w:0,b:["宋铮"],p:["吴巧盈","缪哲灏","宋铮","王丁宇"]},{c:"问舟",r:"小组赛",w:0,b:[],p:["韦怡扬","邢家璇","许子健","宫淋浩"]},{c:"南萤线下",r:"复赛",w:1,b:["程一"],p:["吴巧盈","王天远","程一","缪哲灏"]},{c:"南萤线下",r:"半决赛",w:1,b:["缪哲灏"],p:["郑浩鸣","王天远","程一","缪哲灏"]},{c:"南萤线下",r:"决赛",w:1,b:["程一"],p:["郑浩鸣","王天远","程一","缪哲灏"]},{c:"运筹",r:"36进18",w:1,b:["何天昊"],p:["史元岳","郑浩鸣","何天昊","杨世宇"]},{c:"运筹",r:"16进8",w:1,b:["戴行健"],p:["杨世宇","戴行健","郑浩鸣","尹雯萱"]},{c:"运筹",r:"8进4",w:0,b:["郑浩鸣"],p:["杨世宇","韦怡扬","郑浩鸣","尹雯萱"]},{c:"华语网辩",r:"第一轮",w:1,b:[],p:["张宝文","郑浩鸣","戴行健",""]},{c:"华语网辩",r:"第二轮",w:0,b:[],p:["宫淋浩","郑浩鸣","宋铮",""]},{c:"薪火杯",r:"第一轮",w:1,b:["缪哲灏"],p:["韦怡扬","宫淋浩","缪哲灏","邢家璇"]},{c:"薪火杯",r:"第二轮",w:1,b:["郑浩鸣"],p:["杨世宇","郑浩鸣","戴行健","袁蓝"]},{c:"薪火杯",r:"8进4",w:1,b:["戴行健"],p:["毛真洁","郑浩鸣","戴行健","张柏林"]},{c:"薪火杯",r:"半决赛",w:0,b:[],p:["邹一菲","郑浩鸣","戴行健","吴巧盈"]},{c:"北美",r:"小组赛一",w:0,b:[],p:["张宝文","宫淋浩","许子健","吴巧盈"]},{c:"北美",r:"小组赛二",w:1,b:[],p:["潘芷蕴","石憬颐","戴行健","杨世宇"]},{c:"北美",r:"8进4",w:1,b:[],p:["许子健","吴巧盈","杨世宇","张宝文"]},{c:"北美",r:"半决赛",w:0,b:[],p:["宫淋浩","吴巧盈","缪哲灏","许子健"]},{c:"九洲杯",r:"小组赛一",w:0,b:["宋铮"],p:["左焕达","程一","宋铮","戴行健"]},{c:"九洲杯",r:"小组赛二",w:1,b:["程一"],p:["邢家璇","程一","宋铮","戴行健"]},{c:"九洲杯",r:"复赛",w:0,b:[],p:["邢家璇","程一","宋铮","戴行健"]},{c:"燕云",r:"小组赛一",w:0,b:[],p:["韦怡扬","史元岳","宫淋浩",""]},{c:"燕云",r:"小组赛二",w:1,b:[],p:["石憬颐","陈映竹","史元岳",""]},{c:"燕云",r:"复赛",w:0,b:[],p:["石憬颐","宫淋浩","陈映竹",""]},{c:"云游",r:"小组赛一",w:0,b:["宋铮"],p:["韦怡扬","袁蓝","宋铮","缪哲灏"]},{c:"云游",r:"小组赛二",w:1,b:["宋铮"],p:["石憬颐","潘芷蕴","宋铮","缪哲灏"]},{c:"云游",r:"64进32",w:1,b:[],p:["韦怡扬","袁蓝","宋铮","缪哲灏"]},{c:"云游",r:"32进16",w:0,b:[],p:["石憬颐","潘芷蕴","宋铮","缪哲灏"]},{c:"未来知声",r:"小组赛一",w:1,b:["杨世宇"],p:["黄斐凡","史元岳","杨世宇","尹雯萱"]},{c:"未来知声",r:"小组赛二",w:0,b:[],p:["黄斐凡","史元岳","杨世宇","尹雯萱"]},{c:"国际问题",r:"第一轮",w:1,b:["郑浩鸣"],p:["杨世宇","颜铭希","郑浩鸣",""]},{c:"国际问题",r:"第二轮",w:1,b:["郑浩鸣"],p:["毛真洁","颜铭希","郑浩鸣",""]},{c:"国际问题",r:"8进4",w:1,b:["郑浩鸣"],p:["戴行健","郑浩鸣","董欣怡",""]},{c:"乌马河",r:"第一轮",w:1,b:["宋铮"],p:["缪哲灏","左焕达","宋铮","孙可嘉"]},{c:"乌马河",r:"第二轮",w:1,b:["孙可嘉"],p:["缪哲灏","吴巧盈","宋铮","孙可嘉"]},{c:"炜衡杯",r:"小组赛一",w:1,b:["何天昊"],p:["袁蓝","程一","何天昊","杨世宇"]},{c:"炜衡杯",r:"小组赛二",w:1,b:[],p:["唐金瑜","颜铭希","何天昊","宋铮"]},{c:"炜衡杯",r:"复赛",w:1,b:["何天昊"],p:["袁蓝","颜铭希","何天昊","宋铮"]},{c:"炜衡杯",r:"半决赛",w:0,b:["宋铮"],p:["杨世宇","程一","何天昊","宋铮"]},{c:"馨声杯",r:"初赛",w:1,b:[],p:["陈博远","邹一菲","陈中琦","潘芷蕴"]},{c:"云游",r:"小组赛一",w:1,b:["何天昊"],p:["丁艳沛","石憬颐","何天昊","毕晨希"]},{c:"云游",r:"小组赛二",w:0,b:[],p:["韦怡扬","邢家璇","陈映竹","宫淋浩"]},{c:"明德",r:"第一轮",w:0,b:[],p:["潘芷蕴","韦怡扬","张新昆","宫淋浩"]}];
+
+/* ===== DYNAMIC RANKING MODAL ===== */
+(function(){
+  const maxS=PLAYERS[0].score;
+  const totG=PLAYERS.reduce((s,p)=>s+p.total,0);
+  const totW=PLAYERS.reduce((s,p)=>s+p.w,0);
+  const totB=PLAYERS.reduce((s,p)=>s+p.best,0);
+  const avgWr=Math.round(totW/totG*1000)/10;
+  function tc(r){return r<=3?'tier-mvp':r<=8?'tier-core':r<=18?'tier-main':'tier-new'}
+  let h='';
+  // Aggregate
+  h+=`<div class="m-section"><div class="m-agg">
+    <div class="m-agg-item"><div class="m-agg-val">${totG}</div><div class="m-agg-label">总场次</div></div>
+    <div class="m-agg-item"><div class="m-agg-val">${avgWr}%</div><div class="m-agg-label">总胜率</div></div>
+    <div class="m-agg-item"><div class="m-agg-val">${totB}</div><div class="m-agg-label">最佳辩手</div></div>
+  </div></div>`;
+  // Full bar chart
+  h+=`<div class="m-section"><div class="m-section-title">📊 完整积分榜（${PLAYERS.length}人）</div><div class="m-bars">`;
+  PLAYERS.forEach(p=>{
+    const pct=Math.max(2,p.score/maxS*100);
+    h+=`<div class="m-bar-row"><span class="m-bar-rank ${tc(p.rank)}">${p.rank}</span><span class="m-bar-name">${p.name}</span><div class="m-bar-track"><div class="m-bar-fill ${tc(p.rank)}" style="width:${pct}%"></div></div><span class="m-bar-score">${p.score}</span></div>`;
+  });
+  h+=`</div>`;
+  // Tiers
+  const tiers=[{n:'🥇 MVP',c:'tier-mvp',cnt:PLAYERS.filter(p=>p.rank<=3).length,r:'Top 3'},{n:'💎 核心',c:'tier-core',cnt:PLAYERS.filter(p=>p.rank>=4&&p.rank<=8).length,r:'4-8名'},{n:'⚡ 主力',c:'tier-main',cnt:PLAYERS.filter(p=>p.rank>=9&&p.rank<=18).length,r:'9-18名'},{n:'🌱 新锐',c:'tier-new',cnt:PLAYERS.filter(p=>p.rank>=19).length,r:'19名+'}];
+  h+=`<div class="m-tiers">${tiers.map(t=>`<div class="m-tier ${t.c}"><div class="m-tier-icon">${t.n}</div><div class="m-tier-count">${t.cnt}人</div><div class="m-tier-range">${t.r}</div></div>`).join('')}</div></div>`;
+  // Multi-dimensional rankings
+  const dims=[
+    {t:'📊 积分榜',emoji:'📊',sort:(a,b)=>b.score-a.score,val:p=>p.score,u:'分'},
+    {t:'🎯 胜率榜',emoji:'🎯',sort:(a,b)=>b.wr-a.wr,filter:p=>p.total>=10,val:p=>p.wr,u:'%'},
+    {t:'⭐ 最佳辩手',emoji:'⭐',sort:(a,b)=>b.best-a.best,filter:p=>p.best>0,val:p=>p.best,u:'次'},
+    {t:'💪 铁人榜',emoji:'💪',sort:(a,b)=>b.total-a.total,val:p=>p.total,u:'场'},
+    {t:'🏅 甲级赛',emoji:'🏅',sort:(a,b)=>(b.aw*5+b.al*3+b.ab*2)-(a.aw*5+a.al*3+a.ab*2),filter:p=>(p.aw+p.al)>0,val:p=>p.aw*5+p.al*3+p.ab*2,u:'分'}
+  ];
+  h+=`<div class="m-section"><div class="m-section-title">🏆 多维榜单</div>`;
+  h+=`<div class="m-dims-tabs">${dims.map((d,i)=>`<button class="m-dim-tab${i===0?' active':''}" onclick="switchDim(${i})">${d.emoji} ${d.t.split(' ')[1]||d.t}</button>`).join('')}</div>`;
+  dims.forEach((dim,i)=>{
+    let list=[...PLAYERS];
+    if(dim.filter)list=list.filter(dim.filter);
+    list.sort(dim.sort);
+    list=list.slice(0,5);
+    h+=`<div class="m-dim-panel${i===0?' active':''}" data-dim="${i}"><div class="m-dim-title">${dim.t}</div>`;
+    list.forEach((p,j)=>h+=`<div class="m-dim-row"><span class="m-dim-rank">${j+1}</span><span class="m-dim-name">${p.name}</span><span class="m-dim-val">${dim.val(p)}${dim.u}</span></div>`);
+    h+=`</div>`;
+  });
+  h+=`</div>`;
+  // Awards
+  h+=`<div class="m-section"><div class="m-section-title">🏅 年度之最</div><div class="m-awards">
+    <div class="m-award"><div class="m-award-label">积分王</div><div class="m-award-name">缪哲灏</div><div class="m-award-val">97</div></div>
+    <div class="m-award"><div class="m-award-label">最高胜率(≥10场)</div><div class="m-award-name">杨世宇</div><div class="m-award-val">77.8%</div></div>
+    <div class="m-award"><div class="m-award-label">最佳辩手王</div><div class="m-award-name">程一</div><div class="m-award-val">10次</div></div>
+    <div class="m-award"><div class="m-award-label">铁人奖</div><div class="m-award-name">缪哲灏</div><div class="m-award-val">36场</div></div>
+  </div></div>`;
+  modalData.ranking.body=h;
+})();
+
+function switchDim(idx){
+  document.querySelectorAll('.m-dim-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  document.querySelectorAll('.m-dim-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
+}
+
+/* ===== PERSONAL REVIEW LOGIC ===== */
+const POS_NAMES=['一辩','二辩','三辩','四辩'];
+const COMP_CITY={
+  '世界杯':'北京','星耀大湾':'澳门','凤鸣湾区':'深圳',
+  '南萤线下':'吉隆坡','未来知声':'保定','黄联':'北京'
+};
+const ALL_CITIES=['北京','澳门','深圳','保定','吉隆坡'];
+function getCity(comp){return COMP_CITY[comp]||null}
+
+function analyzePlayer(name){
+  const p=PLAYERS.find(x=>x.name===name);
+  if(!p)return null;
+  // my matches
+  const my=MATCHES.filter(m=>m.p.includes(name)).map(m=>({...m,posIdx:m.p.indexOf(name),isBest:m.b.includes(name)}));
+  // position stats
+  const posStats=[0,1,2,3].map(i=>{
+    const g=my.filter(m=>m.posIdx===i);
+    const wins=g.filter(m=>m.w).length;
+    const bests=g.filter(m=>m.isBest).length;
+    return{pos:i,games:g.length,wins,losses:g.length-wins,bests,wr:g.length?Math.round(wins/g.length*1000)/10:0,br:g.length?Math.round(bests/g.length*1000)/10:0};
+  }).filter(ps=>ps.games>0);
+  const mainPos=posStats.length?posStats.reduce((a,b)=>a.games>=b.games?a:b):null;
+  const bestPos=posStats.length?posStats.reduce((a,b)=>a.wr>b.wr?a:b):null;
+  const posCount=posStats.length;
+  // teammates
+  const tm={};
+  my.forEach(m=>{
+    m.p.forEach(mate=>{
+      if(!mate||mate===name)return;
+      if(!tm[mate])tm[mate]={games:0,wins:0,myBest:0,theirBest:0};
+      tm[mate].games++;
+      if(m.w)tm[mate].wins++;
+      if(m.isBest)tm[mate].myBest++;
+      if(m.b.includes(mate))tm[mate].theirBest++;
+    });
+  });
+  const mates=Object.entries(tm).map(([n,d])=>({name:n,...d,wr:d.games?Math.round(d.wins/d.games*1000)/10:0}));
+  const mostGames=mates.length?mates.reduce((a,b)=>a.games>=b.games?a:b):null;
+  const bestPartner=mates.filter(m=>m.games>=3).sort((a,b)=>b.wr-a.wr)[0]||null;
+  const worstPartner=mates.filter(m=>m.games>=3).sort((a,b)=>a.wr-b.wr)[0]||null;
+  const bestCatalyst=mates.filter(m=>m.games>=2&&m.myBest>0).sort((a,b)=>b.myBest/b.games-a.myBest/a.games)[0]||null;
+  const mutualBest=mates.filter(m=>m.games>=2&&m.theirBest>0).sort((a,b)=>b.theirBest/b.games-a.theirBest/a.games)[0]||null;
+  // timeline
+  const timeline=my.map(m=>({comp:m.c,round:m.r,win:m.w,isBest:m.isBest}));
+  // streaks
+  let maxStreak=0,cur=0;
+  timeline.forEach(t=>{if(t.win){cur++;maxStreak=Math.max(maxStreak,cur)}else cur=0});
+  // team averages
+  const teamAvgWr=Math.round(PLAYERS.reduce((s,x)=>s+x.wr,0)/PLAYERS.length*10)/10;
+  const teamAvgBr=Math.round(PLAYERS.reduce((s,x)=>s+x.br,0)/PLAYERS.length*10)/10;
+  const teamAvgScore=Math.round(PLAYERS.reduce((s,x)=>s+x.score,0)/PLAYERS.length*10)/10;
+  const maxScore=PLAYERS[0].score;
+  const maxTotal=Math.max(...PLAYERS.map(x=>x.total));
+  const maxWr=Math.max(...PLAYERS.map(x=>x.wr));
+  const maxBr=Math.max(...PLAYERS.map(x=>x.br));
+  // radar (percentile within team, 0-100)
+  const pctVolume=Math.round(p.total/maxTotal*100);
+  const pctWr=Math.round(p.wr/maxWr*100);
+  const pctBr=maxBr>0?Math.round(p.br/maxBr*100):0;
+  const aTotal=p.aw+p.al;const pctA=Math.round((aTotal/Math.max(1,...PLAYERS.map(x=>x.aw+x.al)))*100);
+  const eff=p.total?p.score/p.total:0;const maxEff=Math.max(...PLAYERS.map(x=>x.total?x.score/x.total:0));
+  const pctEff=Math.round(eff/maxEff*100);
+  // type tag
+  let tag='纵横辩手';
+  if(pctVolume>=70&&pctWr>=60)tag='全能战神';
+  else if(pctBr>=70)tag='最佳辩手收割机';
+  else if(pctA>=60)tag='大赛型选手';
+  else if(pctVolume<40&&pctWr>=70)tag='精准狙击手';
+  else if(pctVolume>=70)tag='铁人选手';
+  else if(pctWr>=70)tag='高胜率选手';
+  else if(posCount>=3)tag='全辩位选手';
+  else if(posCount===1&&mainPos)tag='专精'+POS_NAMES[mainPos.pos];
+  return{p,my,posStats,mainPos,bestPos,posCount,mostGames,bestPartner,worstPartner,bestCatalyst,mutualBest,timeline,maxStreak,teamAvgWr,teamAvgBr,teamAvgScore,maxScore,pctVolume,pctWr,pctBr,pctA,pctEff,tag};
+}
+
+function renderPersonalReview(d){
+  const p=d.p;
+  const radarPts=makeRadarPoints([d.pctVolume,d.pctWr,d.pctBr,d.pctA,d.pctEff]);
+  const radarLabels=['出场量','胜率','佳辩率','甲级赛','积分效率'];
+  let html='';
+  // 1. Greeting
+  html+=`<div class="pr-section pr-greet"><div class="pr-hi">嗨，${p.name}</div><div class="pr-sub">这是你的纵横赛季</div></div>`;
+  // 2. Stats
+  html+=`<div class="pr-section"><div class="pr-stats">
+    <div class="pr-stat"><div class="pr-stat-val">#${p.rank}</div><div class="pr-stat-label">全队排名</div><div class="pr-stat-sub">/ ${PLAYERS.length} 人</div></div>
+    <div class="pr-stat"><div class="pr-stat-val">${p.score}</div><div class="pr-stat-label">总积分</div><div class="pr-stat-sub">${p.w}胜${p.l}负</div></div>
+    <div class="pr-stat"><div class="pr-stat-val">${p.wr}%</div><div class="pr-stat-label">胜率</div><div class="pr-stat-sub">${p.total}场</div></div>
+    <div class="pr-stat"><div class="pr-stat-val">${p.best}</div><div class="pr-stat-label">最佳辩手</div><div class="pr-stat-sub">佳辩率${p.br}%</div></div>
+  </div></div>`;
+  // 3. Radar
+  html+=`<div class="pr-section pr-radar-wrap"><div class="pr-radar-title">选手画像</div>
+    <svg class="pr-radar" width="400" height="380" viewBox="-40 -20 340 300">
+      ${[20,40,60,80,100].map(r=>`<polygon points="${makeRadarPoints([r,r,r,r,r])}" fill="none" stroke="var(--g200)" stroke-width=".5"/>`).join('')}
+      <polygon points="${radarPts}" fill="rgba(78,192,126,.2)" stroke="var(--g500)" stroke-width="2"/>
+      ${radarLabels.map((lb,i)=>{const a=-Math.PI/2+i*Math.PI*2/5;const x=130+Math.cos(a)*125;const y=130+Math.sin(a)*125;return`<text x="${x}" y="${y}" text-anchor="middle" font-size="13" font-weight="500" fill="var(--td)" font-family="var(--sans)">${lb}</text>`}).join('')}
+    </svg>
+    <div class="pr-tag">${d.tag}</div>
+  </div>`;
+  // 4. Position
+  if(d.posStats.length){
+    const maxPosG=Math.max(...d.posStats.map(x=>x.games));
+    html+=`<div class="pr-section"><div class="pr-pos-title">辩位分析</div>`;
+    if(d.mainPos)html+=`<div class="pr-pos-main">你是一名${POS_NAMES[d.mainPos.pos]}</div>`;
+    html+=`<div class="pr-pos-bars">${d.posStats.map(ps=>`
+      <div class="pr-pos-row"><span class="pr-pos-name">${POS_NAMES[ps.pos]}</span>
+        <div class="pr-pos-bar"><div class="pr-pos-fill green" data-w="${ps.games/maxPosG*100}"></div></div>
+        <span class="pr-pos-num">${ps.games}场 ${ps.wr}%胜</span></div>
+    `).join('')}</div>`;
+    const tags=[];
+    if(d.posCount===1)tags.push('专精型');else if(d.posCount===2)tags.push('双栖型');else tags.push('全能型');
+    if(d.bestPos&&d.bestPos.games>=2)tags.push(POS_NAMES[d.bestPos.pos]+'是你的统治区');
+    const bestBrPos=d.posStats.filter(x=>x.bests>0).sort((a,b)=>b.br-a.br)[0];
+    if(bestBrPos)tags.push(POS_NAMES[bestBrPos.pos]+'位最佳辩手收割机');
+    html+=tags.map(t=>`<span class="pr-pos-tag">${t}</span>`).join('');
+    html+=`</div>`;
+  }
+  // 5. Timeline + City Route
+  if(d.timeline.length){
+    // compute cities visited (in order, deduplicated consecutively)
+    const citySeq=[];
+    const cityCounts={};
+    d.timeline.forEach(t=>{
+      const city=getCity(t.comp);
+      if(!city)return;
+      if(!cityCounts[city])cityCounts[city]=0;
+      cityCounts[city]++;
+      if(!citySeq.length||citySeq[citySeq.length-1]!==city)citySeq.push(city);
+    });
+    const visitedCities=Object.keys(cityCounts);
+
+    let streak=0;
+    html+=`<div class="pr-section"><div class="pr-tl-title">赛季征程</div>`;
+
+    // City route map
+    if(visitedCities.length>0){
+      html+=`<div class="pr-cities"><div class="pr-cities-title">🌏 征战足迹 · ${visitedCities.length}座城市</div><div class="pr-cities-row">`;
+      ALL_CITIES.forEach((city,i)=>{
+        const active=cityCounts[city]?'active':'';
+        const count=cityCounts[city]||0;
+        if(i>0)html+=`<span class="pr-city-arrow">→</span>`;
+        html+=`<span class="pr-city ${active}">${city}${count?` <span class="pr-city-count">${count}场</span>`:''}</span>`;
+      });
+      html+=`</div></div>`;
+    }
+
+    html+=`<div class="pr-tl"><div class="pr-tl-track">`;
+    d.timeline.forEach((t,i)=>{
+      streak=t.win?streak+1:0;
+      const cls=[t.win?'win':'loss',t.isBest?'best':'',streak>=3?'streak':''].filter(Boolean).join(' ');
+      html+=`<div class="pr-tl-item"><div class="pr-tl-dot ${cls}"></div><div class="pr-tl-comp">${t.comp}</div><div class="pr-tl-round">${t.round}</div></div>`;
+      if(i<d.timeline.length-1)html+=`<div class="pr-tl-item" style="width:20px;flex-shrink:0"><div class="pr-tl-line"></div></div>`;
+    });
+    html+=`</div></div></div>`;
+  }
+  // 6. Comparison
+  html+=`<div class="pr-section"><div class="pr-cmp-title">与全队对比</div>
+    ${[{label:'胜率',val:p.wr,avg:d.teamAvgWr,max:100},{label:'佳辩率',val:p.br,avg:d.teamAvgBr,max:Math.max(50,p.br+10)},{label:'积分',val:p.score,avg:d.teamAvgScore,max:d.maxScore}].map(c=>`
+      <div class="pr-cmp-row"><span class="pr-cmp-label">${c.label}</span>
+        <div class="pr-cmp-track"><div class="pr-cmp-avg" style="left:${c.avg/c.max*100}%"></div><div class="pr-cmp-fill ${c.val>=c.avg?'above':'below'}" data-w="${c.val/c.max*100}"></div></div>
+        <span class="pr-cmp-val">${c.val}${c.label!=='积分'?'%':''} (均${Math.round(c.avg)}${c.label!=='积分'?'%':''})</span>
+      </div>`).join('')}
+  </div>`;
+  // 7. Teammates
+  const tmCards=[];
+  if(d.mostGames)tmCards.push({icon:'🤝',line:`和 ${d.mostGames.name} 并肩最多`,detail:`${d.mostGames.games}场同场 · ${d.mostGames.wins}胜 · 胜率${d.mostGames.wr}%`});
+  if(d.bestPartner)tmCards.push({icon:'🏆',line:`黄金搭档：${d.bestPartner.name}`,detail:`搭档胜率${d.bestPartner.wr}%（${d.bestPartner.wins}胜${d.bestPartner.games-d.bestPartner.wins}负）`});
+  if(d.worstPartner&&d.worstPartner!==d.bestPartner)tmCards.push({icon:'😅',line:`欢喜冤家：${d.worstPartner.name}`,detail:`搭档胜率${d.worstPartner.wr}%（${d.worstPartner.wins}胜${d.worstPartner.games-d.worstPartner.wins}负）`});
+  if(d.bestCatalyst)tmCards.push({icon:'⭐',line:`佳辩催化剂：${d.bestCatalyst.name}`,detail:`同场时你拿了${d.bestCatalyst.myBest}次最佳辩手`});
+  if(d.mutualBest)tmCards.push({icon:'💡',line:`互相成就：${d.mutualBest.name}`,detail:`同场时对方拿了${d.mutualBest.theirBest}次最佳辩手`});
+  if(tmCards.length){
+    html+=`<div class="pr-section"><div class="pr-tm-title">搭档缘分</div>`;
+    tmCards.forEach(c=>html+=`<div class="pr-tm-card"><div class="pr-tm-icon">${c.icon}</div><div class="pr-tm-info"><div class="pr-tm-line">${c.line}</div><div class="pr-tm-detail">${c.detail}</div></div></div>`);
+    html+=`</div>`;
+  }
+  // 8. Ending
+  html+=`<div class="pr-section pr-ending"><div class="pr-end-msg">期待你的下一个赛季</div><button class="pr-end-btn" onclick="prToHub()">进入完整回顾 →</button></div>`;
+  return html;
+}
+
+function makeRadarPoints(vals){
+  return vals.map((v,i)=>{
+    const a=-Math.PI/2+i*Math.PI*2/5;
+    const r=v/100*105;
+    return`${130+Math.cos(a)*r},${130+Math.sin(a)*r}`;
+  }).join(' ');
+}
+
+/* ===== NAME INPUT + PERSONAL FLOW ===== */
+function showNameInput(){
+  document.getElementById('nameOverlay').classList.add('open');
+  setTimeout(()=>document.getElementById('nameInput').focus(),300);
+}
+document.getElementById('nameInput').addEventListener('keydown',e=>{if(e.key==='Enter')submitName()});
+
+function submitName(){
+  const name=document.getElementById('nameInput').value.trim();
+  if(!name){document.getElementById('nameErr').textContent='请输入姓名';return}
+  const d=analyzePlayer(name);
+  if(!d){document.getElementById('nameErr').textContent='未找到「'+name+'」，请检查姓名';return}
+  document.getElementById('nameOverlay').classList.remove('open');
+  showPersonalReview(d);
+}
+function skipPersonal(){
+  document.getElementById('nameOverlay').classList.remove('open');
+  realEnterHub();
+}
+
+function showPersonalReview(d){
+  const el=document.getElementById('personalReview');
+  el.innerHTML=renderPersonalReview(d);
+  el.classList.add('active');
+  document.body.classList.add('hub-active');
+  // scroll reveal
+  const secs=el.querySelectorAll('.pr-section');
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('vis');
+        // animate bars
+        e.target.querySelectorAll('[data-w]').forEach(b=>{setTimeout(()=>b.style.width=b.dataset.w+'%',200)});
+      }
+    });
+  },{threshold:.15});
+  secs.forEach(s=>obs.observe(s));
+  window.scrollTo(0,0);
+}
+
+function prToHub(){
+  const el=document.getElementById('personalReview');
+  el.classList.remove('active');
+  el.innerHTML='';
+  realEnterHub();
+}
+</script>
+</body>
+</html>
